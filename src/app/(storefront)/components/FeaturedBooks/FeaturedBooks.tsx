@@ -1,0 +1,45 @@
+import { Book } from "@/types/types";
+import BookRow from "../BookRow/BookRow";
+import SectionTitle from "@/app/(storefront)/components/SectionTitle";
+
+interface BookRowProps {
+    books: Book[];
+}
+
+export default function FeaturedBooks({ books }: BookRowProps) {
+    // random by date
+    const today: string = new Date().toISOString().split("T")[0];
+    let seed: number = 0;
+    for (let i = 0; i < today.length; i++) {
+        seed += today.charCodeAt(i);
+    }
+
+    function seededRandom(seed: number) {
+        const x = Math.sin(seed++) * 10000;
+        return x - Math.floor(x);
+    }
+
+    const used = new Set<number>();
+    const indices: number[] = [];
+    while (indices.length < 4 && indices.length < books.length) {
+        const idx = Math.floor(seededRandom(seed + indices.length) * books.length);
+        if (!used.has(idx)) {
+            used.add(idx);
+            indices.push(idx);
+        }
+    }
+
+    const featuredBooks = indices.map(i => books[i]);
+
+    return (
+        <section className={'flex flex-col items-center justify-center py-12 gap-[40px]'}>
+            <div className={'flex flex-col items-center justify-center gap-[12px]'}>
+                <div className={'w-full text-center font-plus-jakarta-sans tracking-widest text-[15px] opacity-70'}>
+                    SOME QUALITY ITEMS
+                </div>
+                <SectionTitle title={'Featured Books'}/>
+            </div>
+            <BookRow books = {featuredBooks}/>
+        </section>
+    )
+}
