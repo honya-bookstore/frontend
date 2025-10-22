@@ -10,9 +10,11 @@
   --color-foreground: var(--foreground);
   --color-line-color: #dedede;
   --color-disabled-color: #ededed;
+  --color-background-darker: #edebe4;
   --font-inter: var(--font-inter);
   --font-plus-jakarta-sans: var(--font-plus-jakarta-sans);
   --font-prata: var(--font-prata);
+  --font-cormorant: var(--font-cormorant-unicase);
 }
 
 body {
