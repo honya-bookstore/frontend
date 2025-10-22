@@ -10,7 +10,7 @@ export default function StorefrontLayout({
     <div className="flex flex-col min-h-screen mx-auto w-screen">
         <div className="flex-grow">
             <Header/>
-            <main className="my-0 py-16">{children}</main>
+            <main className="">{children}</main>
         </div>
         <Footer/>
     </div>

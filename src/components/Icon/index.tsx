@@ -44,7 +44,10 @@ export type IconName =
     | 'people'
     | 'heart'
     | 'order-count'
-    | 'right-arrow';
+    | 'right-arrow'
+    | 'timer'
+    | 'delivery'
+    | 'handshake'
 
 const iconMap: Record<IconName, string> = {
     share: 'mdi:share-variant',
@@ -91,6 +94,9 @@ const iconMap: Record<IconName, string> = {
     heart: 'mdi:heart',
     'order-count': 'material-symbols:orders-rounded',
     'right-arrow': 'mdi:arrow-right-bold',
+    timer: 'mdi:timer-check',
+    delivery: 'mdi:truck-delivery',
+    handshake: 'mdi:handshake',
 };
 
 interface iconProps {

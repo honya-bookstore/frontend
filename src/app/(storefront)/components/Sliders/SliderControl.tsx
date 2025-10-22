@@ -11,14 +11,14 @@ export default function SliderControl({ direction, onClick }: SliderControlProps
         <button
             onClick={onClick}
             className={`
-                bg-white bg-opacity-0 hover:bg-opacity-100 
-                rounded-full p-2 shadow-md 
+                bg-opacity-0 hover:bg-white transition-colors duration-300
+                rounded-full p-2 shadow-md bg-transparent shadow-none border-2 border-line-color cursor-pointer
                 ${direction === 'left' ? 'mr-2' : 'ml-2'}
             `}>
             <Icon
                 icon={direction === 'left' ? 'mdi:chevron-left' : 'mdi:chevron-right'}
-                width={24}
-                height={24}
+                width={48}
+                height={48}
             />
         </button>
     )

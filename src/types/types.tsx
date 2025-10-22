@@ -6,7 +6,7 @@ export interface Book {
     price: number,
     pageCount: number,
     yearPublished: number,
-    category: string,
+    category: string[],
     publisher: string,
     weight: number,
     coverImageUrl: string,

@@ -10,7 +10,7 @@ interface BestSellingSliderProps {
     books: Book[];
 }
 
-export default function BestSellingSlider({ books }: BestSellingSliderProps) {
+export default function Slider({ books }: BestSellingSliderProps) {
     const [current, setCurrent] = useState(0);
     const [direction, setDirection] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -56,7 +56,7 @@ export default function BestSellingSlider({ books }: BestSellingSliderProps) {
         <div
             onMouseEnter={()  => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className={'relative flex flex-col items-center w-screen px-24'}>
+            className={'relative flex flex-col items-center w-screen px-48'}>
             <div className={'flex w-full overflow-hidden px-4 items-center justify-between'}>
                 <SliderControl direction="left" onClick={prev} />
                 <AnimatePresence custom={direction} mode={"popLayout"}>
