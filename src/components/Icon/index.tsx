@@ -43,7 +43,8 @@ export type IconName =
     | 'coin'
     | 'people'
     | 'heart'
-    | 'order-count';
+    | 'order-count'
+    | 'right-arrow';
 
 const iconMap: Record<IconName, string> = {
     share: 'mdi:share-variant',
@@ -89,6 +90,7 @@ const iconMap: Record<IconName, string> = {
     people: 'famicons:people',
     heart: 'mdi:heart',
     'order-count': 'material-symbols:orders-rounded',
+    'right-arrow': 'mdi:arrow-right-bold',
 };
 
 interface iconProps {
