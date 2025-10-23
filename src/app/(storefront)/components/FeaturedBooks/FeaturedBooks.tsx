@@ -33,12 +33,7 @@ export default function FeaturedBooks({ books }: BookRowProps) {
 
     return (
         <section className={'flex flex-col items-center justify-center py-12 gap-[40px]'}>
-            <div className={'flex flex-col items-center justify-center gap-[12px]'}>
-                <div className={'w-full text-center font-plus-jakarta-sans tracking-widest text-[15px] opacity-70'}>
-                    SOME QUALITY ITEMS
-                </div>
-                <SectionTitle title={'Featured Books'}/>
-            </div>
+            <SectionTitle title={'Featured Books'} helper={'SOME QUALITY ITEMS'}/>
             <BookRow books = {featuredBooks}/>
         </section>
     )

@@ -1,10 +1,11 @@
 'use client';
-import { Book } from "@/types/types";
+import {Book} from "@/types/types";
 import {useEffect, useState} from "react";
 import SliderControl from "@/app/(storefront)/components/Sliders/SliderControl";
 import SliderItem from "@/app/(storefront)/components/Sliders/SliderItem";
 import SliderDots from "@/app/(storefront)/components/Sliders/SliderDots";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import {AnimatePresence, motion, Variants} from "framer-motion";
+import {sliderVariants} from "@/motion/variants";
 
 interface BestSellingSliderProps {
     books: Book[];
@@ -35,23 +36,6 @@ export default function Slider({ books }: BestSellingSliderProps) {
         return () => clearTimeout(timer); // clear and restart every slide change
     }, [current, isPaused]);
 
-    const variants: Variants = {
-        enter: (dir: number) => ({
-            x: dir > 0 ? 150 : -150,
-            opacity: 0,
-        }),
-        center: (dir: number) => ({
-            x: 0,
-            opacity: 1,
-            transition: { duration: 0.5, ease: "easeOut" },
-        }),
-        exit: (dir: number) => ({
-            x: dir > 0 ? -150 : 150,
-            opacity: 0,
-            transition: { duration: 0.4, ease: "easeIn" },
-        }),
-    };
-
     return (
         <div
             onMouseEnter={()  => setIsPaused(true)}
@@ -63,7 +47,7 @@ export default function Slider({ books }: BestSellingSliderProps) {
                     <motion.div
                         key={current}
                         custom={direction}
-                        variants={variants}
+                        variants={sliderVariants}
                         initial="enter"
                         animate="center"
                         exit="exit"
