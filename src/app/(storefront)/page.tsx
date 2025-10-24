@@ -18,7 +18,7 @@ export default async function landingPage() {
     return (
         <main className={'flex flex-col w-full items-center'}>
             <Suspense fallback={<div>Loading...</div>}>
-                <section className={'py-14'}>
+                <section className={'py-14 w-full'}>
                     <Slider books={bestSellingBooks}/>
                 </section>
             </Suspense>
