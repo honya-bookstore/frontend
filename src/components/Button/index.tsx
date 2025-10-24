@@ -17,7 +17,7 @@ type ButtonProps = {
     isLoading?: boolean;
     width?: number | string;
     height?: number | string;
-    fontSize?: number | string;
+    //fontSize?: number | string;
     onClick?: () => void | Promise<void>;
     disabled?: boolean;
     className?: string;
@@ -32,7 +32,7 @@ export default function Button({
                                    isLoading: externalLoading,
                                    width,
                                    height,
-                                   fontSize,
+                                   //fontSize,
                                    disabled,
                                    onClick,
                                    className,
@@ -54,8 +54,8 @@ export default function Button({
     }
 
     const base =
-        "flex items-center justify-center font-medium transition-all focus:outline-none " +
-        "select-none disabled:cursor-not-allowed cursor-pointer leading-none align-middle text-base";
+        "flex items-center justify-center transition-all focus:outline-none " +
+        "select-none disabled:cursor-not-allowed cursor-pointer align-middle text-base";
 
     const variants: Record<ButtonVariant, string> = {
         solid: "bg-black text-white hover:bg-gray-800",
@@ -83,7 +83,7 @@ export default function Button({
             style={{
                 width,
                 height,
-                fontSize,
+                //fontSize,
             }}
         >
             {loading ? (
