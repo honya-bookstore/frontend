@@ -12,7 +12,9 @@ export default function StorefrontLayout({
           <div className="flex flex-col min-h-screen mx-auto w-full">
               <div className="flex-grow">
                   <Header/>
-                  {children}
+                  <div className={'flex flex-col items-center'}>
+                        {children}
+                  </div>
               </div>
               <Footer/>
           </div>

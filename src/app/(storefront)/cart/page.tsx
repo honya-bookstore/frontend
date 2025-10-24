@@ -9,8 +9,8 @@ import Link from "next/link";
 export default function CartPage() {
     const { cartItems, subtotal, addToCart, removeFromCart, updateQuantity } = useCart();
     return (
-        <main className={'flex flex-col items-start justify-center gap-8 py-20 w-full px-100'}>
-            <span className={'font-prata text-[28px]'}>
+        <main className={'flex flex-col items-center justify-start gap-8 py-20 w-2/3'}>
+            <span className={'font-prata text-[28px] w-full'}>
                 Shopping Cart <br/>
                 <span className={'font-plus-jakarta-sans text-[18px]'}>
                     {cartItems.length} item{cartItems.length > 1 && 's'} in your cart
