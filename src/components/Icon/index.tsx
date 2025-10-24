@@ -20,6 +20,11 @@ export type IconName =
     | 'star-full'
     | 'upvote'
     | 'downvote'
+    | 'popout'
+    | 'timer'
+    | 'delivery'
+    | 'handshake'
+    | 'right-arrow'
     // CMS
     | 'dashboard'
     | 'category'
@@ -44,10 +49,8 @@ export type IconName =
     | 'people'
     | 'heart'
     | 'order-count'
-    | 'right-arrow'
-    | 'timer'
-    | 'delivery'
-    | 'handshake'
+
+
 
 const iconMap: Record<IconName, string> = {
     share: 'mdi:share-variant',
@@ -97,6 +100,7 @@ const iconMap: Record<IconName, string> = {
     timer: 'mdi:timer-check',
     delivery: 'mdi:truck-delivery',
     handshake: 'mdi:handshake',
+    popout: 'oui:popout',
 };
 
 interface iconProps {

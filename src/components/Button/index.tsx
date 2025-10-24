@@ -18,6 +18,7 @@ type ButtonProps = {
     width?: number | string;
     height?: number | string;
     //fontSize?: number | string;
+    iconSize?: number;
     onClick?: () => void | Promise<void>;
     disabled?: boolean;
     className?: string;
@@ -33,6 +34,7 @@ export default function Button({
                                    width,
                                    height,
                                    //fontSize,
+                                   iconSize = 18,
                                    disabled,
                                    onClick,
                                    className,
@@ -90,17 +92,17 @@ export default function Button({
                 <IconifyIcon
                     icon="line-md:loading-twotone-loop"
                     className="animate-spin"
-                    width={18}
-                    height={18}
+                    width={iconSize}
+                    height={iconSize}
                 />
             ) : (
                 <>
                     {icon && iconPosition === 'left' && (
-                        <Icon name={icon} size={18} className={children ? 'mr-2' : ''}/>
+                        <Icon name={icon} size={iconSize} className={children ? 'mr-2' : ''}/>
                     )}
                     {children}
                     {icon && iconPosition === 'right' && (
-                        <Icon name={icon} size={18} className={children ? 'ml-2' : ''}/>
+                        <Icon name={icon} size={iconSize} className={children ? 'ml-2' : ''}/>
                     )}
                 </>
             )}
