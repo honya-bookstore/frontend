@@ -12,7 +12,7 @@ const navigationItems : Record<string, string> = {
 
 export default function Header() {
     return (
-        <header className={'min-w-screen w-screen flex flex-col'}>
+        <header className={'min-w-full w-full flex flex-col'}>
             <div className={'flex w-full px-60 justify-end py-2'}>
                 <div className={'flex gap-10 items-center font-inter text-[12px]'}>
                     <div
@@ -21,11 +21,13 @@ export default function Header() {
                         <span className={''}>Account</span>
                     </div>
                     <div className={'border-l h-4 border-[#e0e0e0]'}/>
-                    <div
-                        className={'flex w-full gap-1 items-center hover:text-gray-500 transition-colors duration-300 cursor-pointer'}>
-                        <Icon name={"cart"} size={16}/>
-                        <span className={''}>Cart</span>
-                    </div>
+                    <Link href={'/cart'}>
+                        <div
+                            className={'flex w-full gap-1 items-center hover:text-gray-500 transition-colors duration-300 cursor-pointer'}>
+                            <Icon name={"cart"} size={16}/>
+                            <span className={''}>Cart</span>
+                        </div>
+                    </Link>
                 </div>
             </div>
             <div className={'w-full border-b border-[#e0e0e0]'}/>

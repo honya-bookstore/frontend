@@ -3,7 +3,7 @@ import Icon from "@/components/Icon";
 
 export default function Footer() {
     return (
-        <footer className={'w-screen h-auto flex flex-col bg-background-darker'}>
+        <footer className={'w-full h-auto flex flex-col bg-background-darker'}>
             <div className={'w-full flex justify-between items-center px-100 py-10 '}>
                 <div className={'font-cormorant text-5xl'}>
                     <span className={'font-bold'}>BOOK</span>

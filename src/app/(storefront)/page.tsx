@@ -8,7 +8,7 @@ import BestSellingBook from "@/app/(storefront)/components/BestSellingBook/BestS
 import PopularBooks from "@/app/(storefront)/components/PopularBooks/PopularBooks";
 import Image from "next/image";
 import BookCard from "@/app/(storefront)/components/BookCard/BookCard";
-import BooksWithOffer from "@/app/(storefront)/components/BooksWithOffer";
+import BooksWithOffer from "@/app/(storefront)/components/BooksWithOffer/BooksWithOffer";
 
 export default async function landingPage() {
     // fetch books
@@ -16,7 +16,7 @@ export default async function landingPage() {
     const books: Book[] = await res.json();
     const bestSellingBooks = books.sort((a, b) => b.sold - a.sold).slice(0, 4);
     return (
-        <main className={'flex flex-col w-screen items-center'}>
+        <main className={'flex flex-col w-full items-center'}>
             <Suspense fallback={<div>Loading...</div>}>
                 <section className={'py-14'}>
                     <Slider books={bestSellingBooks}/>
@@ -61,7 +61,7 @@ export default async function landingPage() {
                     <svg width="31" height="7" viewBox="0 0 31 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M0.921631 1C0.921631 1 3.02385 6 5.02877 6C7.0337 6 7.13099 1 9.13592 1C11.1408 1 11.2381 6 13.2431 6C15.248 6 15.3453 1 17.3502 1C19.3551 1 19.4524 6 21.4573 6C23.4623 6 23.5596 1 25.5645 1C27.5694 1 29.6716 6 29.6716 6"
-                            stroke="#74642F" stroke-width="2"/>
+                            stroke="#74642F" strokeWidth="2"/>
                     </svg>
                 </div>
                 <div className={'flex flex-col gap-16'}>

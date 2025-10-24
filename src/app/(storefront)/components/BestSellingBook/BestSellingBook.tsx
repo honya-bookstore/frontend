@@ -9,7 +9,7 @@ interface BestSellingBookProps {
 
 export default function BestSellingBook({book} : BestSellingBookProps){
     return (
-        <section className={'w-screen flex items-center justify-center py-20 min-h-screen gap-20 bg-cover'} style={{backgroundImage: `url('/images/bgui/best-selling-bg.png')`}}>
+        <section className={'w-full flex items-center justify-center py-20 min-h-screen gap-20 bg-cover'} style={{backgroundImage: `url('/images/bgui/best-selling-bg.png')`}}>
             <Image src={`/${book.coverImageUrl}`} alt={book.title} width={400} height={500} loading={"lazy"} className={'shadow-2xl overflow-hidden h-[575px] w-auto'} />
             <div className={'max-w-[550px] flex flex-col gap-16'}>
                 <div className={'font-prata text-[62px] gap-2 flex flex-col'}>
