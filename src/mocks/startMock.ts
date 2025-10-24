@@ -7,7 +7,8 @@ export async function startMock() {
     } else {
         // Client-side
         const { worker } = await import("./browser");
-        await worker.start();
+        await worker.start({ onUnhandledRequest: "bypass" });
         console.log("🟢 MSW (Browser) mock worker running");
     }
 }
+

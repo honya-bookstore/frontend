@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 if (process.env.NODE_ENV === "development") {
-    import("@/mocks").then(({ startMock }) => startMock());
+    import("@/mocks/startMock").then(({ startMock }) => startMock());
 }
 
 export default function RootLayout({
