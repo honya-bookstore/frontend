@@ -4,6 +4,7 @@ import {Input} from "postcss";
 import ShortField from "@/components/Input Field/ShortField";
 import {useState} from "react";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 
 // TODO: Remember to add charLimit to and validation for all fields
@@ -72,18 +73,22 @@ export default function ShippingInformation() {
                         className={'w-full p-3 text-[18px]'}/>
                 </div>
                 <div className={'w-full flex items-start justify-between gap-4 mt-4'}>
-                    <Button
-                        shape={'rect'}
-                        variant={'outline'}
-                        className={'text-black hover:bg-gray-700 font-plus-jakarta-sans font-light text-[18px] mt-4 w-full py-4'}>
-                        Back
-                    </Button>
-                    <Button
-                        shape={'rect'}
-                        variant={'solid'}
-                        className={'bg-black text-white hover:bg-gray-700 font-plus-jakarta-sans font-light text-[18px] mt-4 w-full py-4'}>
-                        Proceed to Payment
-                    </Button>
+                    <Link href={'/cart'} className={'mt-4 w-full'}>
+                        <Button
+                            shape={'rect'}
+                            variant={'outline'}
+                            className={'text-black hover:bg-gray-100 font-plus-jakarta-sans font-light text-[18px] w-full py-4'}>
+                            Back
+                        </Button>
+                    </Link>
+                    <Link href={'/checkout/payment'} className={'mt-4 w-full'}>
+                        <Button
+                            shape={'rect'}
+                            variant={'solid'}
+                            className={'bg-black text-white hover:bg-gray-700 font-plus-jakarta-sans font-light text-[18px] w-full py-4'}>
+                            Proceed to Payment
+                        </Button>
+                    </Link>
                 </div>
             </form>
         </section>
