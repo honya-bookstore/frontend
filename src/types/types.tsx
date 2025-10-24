@@ -78,3 +78,8 @@ export interface Ticket {
     resolvedAt: string;
     responderId: string;
 }
+
+export interface CartItem extends Book {
+    quantity: number;
+}
+
