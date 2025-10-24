@@ -17,11 +17,11 @@ export default async function landingPage() {
     return (
         <main className={'flex flex-col w-full items-center'}>
             <Suspense fallback={<div>Loading...</div>}>
-                <section className={'py-14 w-full'}>
+                <section className={'py-32 w-full'}>
                     <Slider books={bestSellingBooks}/>
                 </section>
             </Suspense>
-            <section className={'flex flex-col items-center justify-center mt-36 py-12 bg-background-darker w-full gap-10'}>
+            <section className={'flex flex-col items-center justify-center mt-16 py-12 bg-background-darker w-full gap-10'}>
                     <SectionTitle title={'Why shop with us?'}/>
                     <div
                         className={'flex justify-center w-full gap-40 font-plus-jakarta-sans uppercase font-bold tracking-wide text-[#94928b] text-[20px]'}>
