@@ -83,3 +83,8 @@ export interface CartItem extends Book {
     quantity: number;
 }
 
+export interface Cart {
+    items: CartItem[];
+
+}
+

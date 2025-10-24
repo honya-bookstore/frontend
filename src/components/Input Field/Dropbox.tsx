@@ -7,6 +7,7 @@ type DropboxProps = {
     error?: string
     className?: string
     options: string[]
+    onValueChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
 } & React.SelectHTMLAttributes<HTMLSelectElement>
 
 export default function Dropbox({
@@ -16,6 +17,7 @@ export default function Dropbox({
                                     error,
                                     className,
                                     options,
+                                    onValueChange,
                                     ...props
                                 }: DropboxProps) {
     return (
@@ -25,6 +27,7 @@ export default function Dropbox({
             )}
             <select
                 {...props}
+                onChange={onValueChange}
                 className={`border rounded-[10px] focus:border-[#ffffff] border-line-color transition ${
                     props.disabled
                         ? "bg-disabled-color text-gray-500 cursor-not-allowed"

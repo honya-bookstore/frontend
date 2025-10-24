@@ -1,3 +1,4 @@
+'use client'
 import React from "react"
 
 type ShortFieldProps = {
@@ -7,6 +8,7 @@ type ShortFieldProps = {
     error?: string
     className?: string
     charLimit?: number
+    onValueChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 } & React.InputHTMLAttributes<HTMLInputElement>
 
 export default function ShortField({
@@ -16,15 +18,17 @@ export default function ShortField({
                                        error,
                                        className,
                                        charLimit,
+                                       onValueChange,
                                        ...props
                                    }: ShortFieldProps) {
     return (
-        <div {...props} className="flex flex-col font-plus-jakarta-sans">
+        <div {...props} className="flex flex-col font-plus-jakarta-sans w-full">
             {!hideLabel && label && (
-                <label className="mb-1 text-sm font-medium text-gray-700">{label}</label>
+                <label className="mb-1 text-[16px] text-black">{label}</label>
             )}
             <input
                 maxLength={charLimit}
+                onChange={onValueChange}
                 className={`border rounded-[10px] focus:border-[#ffffff] border-line-color transition ${
                     props.disabled
                         ? "bg-disabled-color text-gray-500 cursor-not-allowed"

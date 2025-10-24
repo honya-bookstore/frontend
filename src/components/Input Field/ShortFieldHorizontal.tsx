@@ -7,6 +7,7 @@ type ShortFieldHorizontalProps = {
     error?: string
     className?: string
     charLimit?: number
+    onValueChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 } & React.InputHTMLAttributes<HTMLInputElement>
 
 export default function ShortFieldHorizontal({
@@ -16,6 +17,7 @@ export default function ShortFieldHorizontal({
                                                  error,
                                                  className,
                                                  charLimit,
+                                                 onValueChange,
                                                  ...props
                                              }: ShortFieldHorizontalProps) {
     return (
@@ -27,6 +29,7 @@ export default function ShortFieldHorizontal({
             )}
             <div className="flex flex-col w-full">
                 <input
+                    onChange={onValueChange}
                     {...props}
                     maxLength={charLimit}
                     className={`border rounded-[10px] focus:border-[#ffffff] border-line-color transition ${

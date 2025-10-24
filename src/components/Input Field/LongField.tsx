@@ -7,6 +7,7 @@ type LongFieldProps = {
     error?: string
     className?: string
     charLimit?: number
+    onValueChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>
 
 export default function LongField({
@@ -16,6 +17,7 @@ export default function LongField({
                                       error,
                                       className,
                                       charLimit,
+                                      onValueChange,
                                       ...props
                                   }: LongFieldProps) {
     return (
@@ -26,6 +28,7 @@ export default function LongField({
             <textarea
                 {...props}
                 maxLength={charLimit}
+                onChange={onValueChange}
                 className={`border rounded-[10px] focus:border-[#ffffff] border-line-color resize-none transition ${
                     props.disabled
                         ? "bg-disabled-color text-gray-500 cursor-not-allowed"
