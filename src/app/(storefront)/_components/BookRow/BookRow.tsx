@@ -1,6 +1,6 @@
 import {Book} from "@/types/types";
 import Image from "next/image";
-import BookCard from "@/app/(storefront)/components/BookCard/BookCard";
+import BookCard from "@/app/(storefront)/_components/BookCard/BookCard";
 
 interface BookRowProps {
     // "Books" limit to 4 or less items

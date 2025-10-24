@@ -1,8 +1,8 @@
 'use client';
 
-import {useCart} from "@/app/(storefront)/context/CartContext";
+import {useCart} from "@/app/(storefront)/_context/CartContext";
 import {CartItem as CartItemType} from "@/types/types";
-import CartItem from "@/app/(storefront)/cart/components/CartItem/CartItem";
+import CartItem from "@/app/(storefront)/cart/_components/CartItem/CartItem";
 import Button from "@/components/Button";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 import { Book, Category } from "@/types/types";
-import SectionTitle from "@/app/(storefront)/components/SectionTitle";
-import CategorySelector from "@/app/(storefront)/components/PopularBooks/CategorySelector";
+import SectionTitle from "@/app/(storefront)/_components/SectionTitle";
+import CategorySelector from "@/app/(storefront)/_components/PopularBooks/CategorySelector";
 
 interface PopularBooksProps {
     books: Book[];

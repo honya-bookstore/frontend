@@ -1,6 +1,6 @@
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import {CartContextProvider} from "@/app/(storefront)/context/CartContext";
+import Header from "@/app/(storefront)/_components/Header/Header";
+import Footer from "@/app/(storefront)/_components/Footer/Footer";
+import {CartContextProvider} from "@/app/(storefront)/_context/CartContext";
 
 export default function StorefrontLayout({
   children,

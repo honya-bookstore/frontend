@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Book, Category } from "@/types/types";
-import BookRow from "@/app/(storefront)/components/BookRow/BookRow";
+import BookRow from "@/app/(storefront)/_components/BookRow/BookRow";
 
 interface CategorySelectorProps {
     categories: Category[];

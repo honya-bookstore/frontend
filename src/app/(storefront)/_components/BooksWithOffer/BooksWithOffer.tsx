@@ -1,9 +1,9 @@
 'use client';
 
 import {Book} from "@/types/types";
-import SectionTitle from "@/app/(storefront)/components/SectionTitle";
-import BookCard from "@/app/(storefront)/components/BookCard/BookCard";
-import SliderDots from "@/app/(storefront)/components/Sliders/SliderDots";
+import SectionTitle from "@/app/(storefront)/_components/SectionTitle";
+import BookCard from "@/app/(storefront)/_components/BookCard/BookCard";
+import SliderDots from "@/app/(storefront)/_components/Sliders/SliderDots";
 import {useState} from "react";
 import {AnimatePresence, motion, Variants} from "framer-motion";
 import {sliderVariants} from "@/motion/variants";

@@ -1,14 +1,13 @@
 import {Book} from "@/types/types";
-import Slider from "@/app/(storefront)/components/Sliders/Slider";
+import Slider from "@/app/(storefront)/_components/Sliders/Slider";
 import {Suspense} from "react";
 import Icon from "@/components/Icon";
-import SectionTitle from "@/app/(storefront)/components/SectionTitle";
-import FeaturedBooks from "@/app/(storefront)/components/FeaturedBooks/FeaturedBooks";
-import BestSellingBook from "@/app/(storefront)/components/BestSellingBook/BestSellingBook";
-import PopularBooks from "@/app/(storefront)/components/PopularBooks/PopularBooks";
+import SectionTitle from "@/app/(storefront)/_components/SectionTitle";
+import FeaturedBooks from "@/app/(storefront)/_components/FeaturedBooks/FeaturedBooks";
+import BestSellingBook from "@/app/(storefront)/_components/BestSellingBook/BestSellingBook";
+import PopularBooks from "@/app/(storefront)/_components/PopularBooks/PopularBooks";
 import Image from "next/image";
-import BookCard from "@/app/(storefront)/components/BookCard/BookCard";
-import BooksWithOffer from "@/app/(storefront)/components/BooksWithOffer/BooksWithOffer";
+import BooksWithOffer from "@/app/(storefront)/_components/BooksWithOffer/BooksWithOffer";
 
 export default async function landingPage() {
     // fetch books

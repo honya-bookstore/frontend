@@ -1,6 +1,6 @@
 import { Book } from "@/types/types";
 import BookRow from "../BookRow/BookRow";
-import SectionTitle from "@/app/(storefront)/components/SectionTitle";
+import SectionTitle from "@/app/(storefront)/_components/SectionTitle";
 
 interface BookRowProps {
     books: Book[];
