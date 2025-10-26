@@ -13,6 +13,7 @@ export interface Book {
     imageUrls: string[],
     stock: number,
     sold: number,
+    dateAdded: string,
 }
 
 export interface Category {
