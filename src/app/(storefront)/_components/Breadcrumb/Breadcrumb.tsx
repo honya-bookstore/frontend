@@ -13,14 +13,14 @@ export default function Breadcrumb() {
     return (
         <nav aria-label={'breadcrumb'} className={'flex items-center py-1 text-[16px] font-plus-jakarta-sans gap-2'}>
             {breadcrumbs.map((breadcrumb, index) => (
-                <>
-                    <Link key={index} href={breadcrumb.href} className={'hover:text-blue-600 transition-all duration-200'}>
+                <div key={index}>
+                    <Link href={breadcrumb.href} className={'hover:text-blue-600 transition-all duration-200'}>
                     {breadcrumb.name}
                     </Link>
                     {index !== breadcrumbs.length - 1 && (
                         "/"
                     )}
-                </>
+                </div>
             ))}
         </nav>
     )

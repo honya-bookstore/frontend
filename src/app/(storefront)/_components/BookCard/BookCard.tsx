@@ -3,6 +3,7 @@ import {Book} from "@/types/types";
 import Image from "next/image";
 import {useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
+import Link from "next/link";
 
 interface BookCardProps {
     discount?: number;
@@ -44,9 +45,9 @@ export default function BookCard({book, discount = 0, showCartButton = false}: B
                 )}
             </div>
             <div className={'book-info flex flex-col items-center w-full'}>
-                <span className={'font-prata text-[16px] text-center'}>
+                <Link href={`/books/${book.id}`} className={'font-prata text-[16px] text-center hover:text-blue-600 transition-all duration-200'}>
                     {book.title}
-                </span>
+                </Link>
                 <span className={'font-plus-jakarta-sans text-[16px] text-center opacity-50'}>
                     {book.author}
                 </span>
