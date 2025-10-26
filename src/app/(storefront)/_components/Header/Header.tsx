@@ -5,7 +5,7 @@ import Image from "next/image";
 const navigationItems : Record<string, string> = {
     HOME: '/',
     ABOUT: '/about',
-    SHOP: '/shop',
+    SHOP: '/books',
     ARTICLES: '/articles',
     CONTACT: '/contact',
 };
