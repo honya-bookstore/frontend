@@ -14,7 +14,8 @@
     "imageUrls": [],
     "stock": 120,
     "sold": 560,
-    "quantity": 2
+    "quantity": 2,
+    "dateAdded": "2024-06-10T14:20:00Z"
   },
   {
     "id": "2",
@@ -31,6 +32,7 @@
     "imageUrls": [],
     "stock": 85,
     "sold": 32,
-    "quantity": 1
+    "quantity": 1,
+    "dateAdded": "2024-06-15T10:30:00Z"
   }
 ]
