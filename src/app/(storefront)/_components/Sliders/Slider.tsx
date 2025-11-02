@@ -40,8 +40,8 @@ export default function Slider({ books }: BestSellingSliderProps) {
         <div
             onMouseEnter={()  => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className={'relative flex flex-col items-center w-full px-48'}>
-            <div className={'flex w-full px-4 items-center justify-between gap-10'}>
+            className={'relative flex flex-col items-center w-full mx-auto'}>
+            <div className={'flex w-full px-4 items-center justify-between gap-10 px-[calc(100%/10)]'}>
                 <SliderControl direction="left" onClick={prev} />
                 <AnimatePresence custom={direction} mode={"popLayout"}>
                     <motion.div

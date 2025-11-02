@@ -13,5 +13,14 @@ export const handlers = [
     }),
     http.get('https://api.example.com/cart', () => {
         return HttpResponse.json(cart, { status: 200 });
+    }),
+    http.get('https://api.example.com/book/:id', (req) => {
+        const { id } = req.params;
+        const bookDetail = book.find(b => b.id === id);
+        if (bookDetail) {
+            return HttpResponse.json(bookDetail, { status: 200 });
+        } else {
+            return HttpResponse.json({ message: 'Book not found' }, { status: 404 });
+        }
     })
 ]

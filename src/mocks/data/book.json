@@ -13,7 +13,7 @@
         "publisher": "Yen Press",
         "weight": 0.45,
         "coverImageUrl": "images/books/Novel1.png",
-        "imageUrls": [],
+        "imageUrls": ["images/books/Science1.png", "images/books/Science2.png", "images/books/Science3.png", "images/books/Novel1.png"],
         "stock": 120,
         "sold": 560,
         "dateAdded": "2025-10-26T14:41:19.852Z"
