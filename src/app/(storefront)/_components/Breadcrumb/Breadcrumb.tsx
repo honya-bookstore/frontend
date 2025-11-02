@@ -13,7 +13,7 @@ export default function Breadcrumb() {
     return (
         <nav aria-label={'breadcrumb'} className={'flex items-center py-1 text-[16px] font-plus-jakarta-sans gap-2'}>
             {breadcrumbs.map((breadcrumb, index) => (
-                <div key={index}>
+                <div key={index} className={'flex items-center gap-2'}>
                     <Link href={breadcrumb.href} className={'hover:text-blue-600 transition-all duration-200'}>
                     {breadcrumb.name}
                     </Link>
