@@ -22,7 +22,9 @@ export default async function landingPage() {
                 </section>
             </Suspense>
             <section className={'flex flex-col items-center justify-center mt-16 py-12 bg-background-darker w-full gap-10'}>
-                    <SectionTitle title={'Why shop with us?'}/>
+                    <div className={'w-3/5'}>
+                        <SectionTitle title={'Why shop with us?'}/>
+                    </div>
                     <div
                         className={'flex justify-center w-full gap-40 font-plus-jakarta-sans uppercase font-bold tracking-wide text-[#94928b] text-[20px]'}>
                         <div className={'flex flex-col items-center justify-center gap-4'}>
