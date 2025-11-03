@@ -1,8 +1,8 @@
 [
     {
-        "id": "1",
+        "id": 1,
         "title": "Suzume No Tojimari",
-        "description": "A touching novel adaptation of Makoto Shinkai’s film, following Suzume’s journey to close mysterious doors that unleash disasters across Japan.",
+        "description": "A touching novel adaptation of Makoto Shinkai’s acclaimed film, *Suzume No Tojimari* follows the life of a spirited high school girl whose ordinary world is turned upside down when she discovers a mysterious door standing alone in a forgotten ruin. When opened, it releases powerful forces that threaten to bring disasters upon Japan. Determined to protect her world, Suzume embarks on a journey across the country, closing these dangerous portals one by one. Along the way, she encounters strangers, kind souls, and memories of loss that shape her understanding of connection, love, and the meaning of letting go. Blending magical realism with emotional storytelling, the novel paints a vivid picture of Japan’s landscapes and the fragile balance between the human heart and nature’s mysteries. Both heartwarming and melancholic, *Suzume No Tojimari* is a story about healing, courage, and finding the doors that lead us home.",
         "author": "Makoto Shinkai",
         "price": 14.99,
         "pageCount": 320,
@@ -19,9 +19,9 @@
         "dateAdded": "2025-10-26T14:41:19.852Z"
     },
     {
-        "id": "2",
+        "id": 2,
         "title": "How To Think Like Einstein",
-        "description": "A guide to developing creative thinking and problem-solving skills inspired by Albert Einstein’s unique approach to science and life.",
+        "description": "In *How to Think Like Einstein*, Scott Thorpe invites readers to unlock their own creativity by stepping into the mind of one of history’s greatest geniuses. Drawing from Einstein’s revolutionary approach to science and problem-solving, the book explores practical techniques for challenging assumptions, reimagining familiar concepts, and seeing the world from entirely new perspectives. Thorpe breaks down Einstein’s thinking patterns into accessible, real-world applications that can transform how we tackle everyday challenges — from work and education to personal growth. Through anecdotes, exercises, and examples from scientific breakthroughs to ordinary life, readers learn how to think freely, embrace curiosity, and cultivate imagination as a tool for innovation. Engaging, inspiring, and insightful, this book reminds us that creativity is not an inherited gift but a mindset anyone can develop with the right attitude toward questioning and discovery.",
         "author": "Scott Thorpe",
         "price": 18.5,
         "pageCount": 256,
@@ -38,9 +38,9 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "3",
+        "id": 3,
         "title": "Only Murder",
-        "description": "A chilling thriller about a detective trapped in a small town where every clue points back to his own past.",
+        "description": "In this gripping psychological thriller, Detective Daniel Cross is summoned to a small, snowbound town to investigate a series of brutal murders that shake the quiet community. As he follows the trail of evidence, every clue seems to point closer to his own buried past — a past he has spent years trying to forget. Haunted by guilt and paranoia, Cross must navigate a web of lies, small-town secrets, and hidden motives, where no one can be trusted and nothing is what it seems. *Only Murder* masterfully weaves suspense and emotion into a chilling narrative of redemption and obsession. Lisa Matthews delivers a taut, atmospheric story that explores how trauma shapes memory and how far someone will go to uncover the truth — even when the truth could destroy them. Fans of Gillian Flynn and Paula Hawkins will find this a must-read that lingers long after the final page.",
         "author": "Lisa Matthews",
         "price": 21,
         "pageCount": 390,
@@ -57,7 +57,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "4",
+        "id": 4,
         "title": "The Love Hypothesis",
         "description": "A rom-com novel about a young scientist navigating fake dating and unexpected love in academia.",
         "author": "Ali Hazelwood",
@@ -76,7 +76,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "5",
+        "id": 5,
         "title": "It's a Funny Thing",
         "description": "A light-hearted exploration of humor and human nature through witty stories and real-life anecdotes.",
         "author": "James Corbin",
@@ -95,7 +95,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "6",
+        "id": 6,
         "title": "The Nature Of Technology",
         "description": "An insightful analysis of how technology evolves and shapes society, exploring the logic behind invention and innovation.",
         "author": "W. Brian Arthur",
@@ -114,7 +114,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "7",
+        "id": 7,
         "title": "Tomorrow Most Likely",
         "description": "A delightful children’s book that imagines all the wonderful things tomorrow might bring, encouraging curiosity and imagination.",
         "author": "Dave Eggers",
@@ -133,7 +133,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "8",
+        "id": 8,
         "title": "Fundamentals Of Business",
         "description": "A comprehensive introduction to modern business concepts, including management, marketing, finance, and entrepreneurship.",
         "author": "Stephen J. Skripak",
@@ -152,7 +152,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "9",
+        "id": 9,
         "title": "The Mind Of A Leader",
         "description": "An exploration of leadership inspired by the philosophies of ancient thinkers and modern psychology.",
         "author": "Rasmus Hougaard",
@@ -171,7 +171,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "10",
+        "id": 10,
         "title": "The Business Of The Future",
         "description": "A visionary look at how science and technology are reshaping the business landscape of tomorrow.",
         "author": "Elena G. Meyer",
@@ -192,7 +192,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "11",
+        "id": 11,
         "title": "Journey To The Stars",
         "description": "An imaginative children’s story about a young astronaut’s journey through the galaxy to discover friendship and courage.",
         "author": "Emily Carter",
@@ -211,7 +211,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "12",
+        "id": 12,
         "title": "Green Thumb Poppy",
         "description": "A charming children’s book about a young gardener who learns to care for plants and people alike.",
         "author": "Harper Lane",
@@ -230,7 +230,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "13",
+        "id": 13,
         "title": "I Can't Make This Up",
         "description": "A hilarious and honest memoir from comedian Kevin Hart, full of stories about resilience and laughter.",
         "author": "Kevin Hart",
@@ -249,7 +249,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "14",
+        "id": 14,
         "title": "A Calling For Charlie Barnes",
         "description": "A darkly humorous story of one man’s life, his regrets, and the absurdity of chasing success.",
         "author": "Joshua Ferris",
@@ -268,7 +268,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "15",
+        "id": 15,
         "title": "The Thing In The Snow",
         "description": "A surreal novel blending thriller and existential mystery set in an isolated research station buried in snow.",
         "author": "Sean Adams",
@@ -288,7 +288,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "16",
+        "id": 16,
         "title": "Bloom Into You",
         "description": "A tender and emotional coming-of-age romance between two girls discovering love for the first time. ",
         "author": "Nakatani Nio",
@@ -308,7 +308,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "17",
+        "id": 17,
         "title": "The America Roommate Experiment",
         "description": "A romantic comedy about two writers sharing an apartment and discovering love in unexpected ways.",
         "author": "Elena Armas",
@@ -328,7 +328,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "18",
+        "id": 18,
         "title": "Technically Yours",
         "description": "A tech-driven love story about two software engineers navigating code, deadlines, and desire.",
         "author": "Denise Williams",
@@ -347,7 +347,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "19",
+        "id": 19,
         "title": "The Science Of Science",
         "description": "An exploration of the data-driven patterns behind how science itself progresses and evolves.",
         "author": "Dashun Wang",
@@ -367,7 +367,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "20",
+        "id": 20,
         "title": "This New Ocean",
         "description": "A sweeping chronicle of humanity’s ventures into space, blending science, history, and vision.",
         "author": "William E. Burrows",
@@ -386,7 +386,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "21",
+        "id": 21,
         "title": "How AI Ate The World",
         "description": "A deep dive into how artificial intelligence transformed industries, culture, and our understanding of humanity.",
         "author": "Sam Altier",
@@ -406,7 +406,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "22",
+        "id": 22,
         "title": "The Worlds I See",
         "description": "An inspiring memoir and vision of AI’s potential by a leading scientist shaping the future of technology.",
         "author": "Fei-Fei Li",
@@ -426,7 +426,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "23",
+        "id": 23,
         "title": "The Girls In The Cabin",
         "description": "A psychological thriller about four friends trapped in a remote cabin with a killer among them.",
         "author": "Megan Brooks",
@@ -446,7 +446,7 @@
         "dateAdded": "2025-10-26T14:41:19.854Z"
     },
     {
-        "id": "24",
+        "id": 24,
         "title": "The Girls They Fear",
         "description": "A gripping thriller following a journalist uncovering a string of murders linked to a secret society.",
         "author": "Rebecca Barrow",

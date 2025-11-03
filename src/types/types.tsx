@@ -1,5 +1,5 @@
 export interface Book {
-    id: string,
+    id: number,
     title: string,
     description: string,
     author: string,
@@ -17,16 +17,16 @@ export interface Book {
 }
 
 export interface Category {
-    id: string,
+    id: number,
     name: string,
     description: string,
     slug: string,
 }
 
 export interface Order {
-    id: string,
+    id: number,
     userId: string,
-    bookIds: string[],
+    bookIds: number[],
     totalPrice: number,
     address: string,
     paymentMethod: string,
@@ -60,7 +60,7 @@ export interface User {
 }
 
 export interface Media {
-    id: string,
+    id: number,
     userId: string,
     fileName: string,
     url: string,
@@ -68,7 +68,7 @@ export interface Media {
 }
 
 export interface Ticket {
-    id: string;
+    id: number;
     userId: string;
     title: string;
     category: string;
@@ -80,12 +80,21 @@ export interface Ticket {
     responderId: string;
 }
 
+export interface Review {
+    id: number;
+    bookId: number;
+    userId: string;
+    rating: number;
+    content: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
 export interface CartItem extends Book {
     quantity: number;
 }
 
 export interface Cart {
     items: CartItem[];
-
 }
 
