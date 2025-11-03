@@ -3,6 +3,7 @@ import { http, HttpResponse } from 'msw';
 import book from "./data/book.json"
 import category from "./data/category.json"
 import cart from "./data/cart.json"
+import review from "./data/review.json"
 
 export const handlers = [
     http.get('https://api.example.com/book', () => {
@@ -14,9 +15,12 @@ export const handlers = [
     http.get('https://api.example.com/cart', () => {
         return HttpResponse.json(cart, { status: 200 });
     }),
-    http.get('https://api.example.com/book/:id', (req) => {
+    http.get('http://api.example.com/reviews', () => {
+        return HttpResponse.json(review, { status: 200 });
+    }),
+    http.get('http://api.example.com/book/:id', (req) => {
         const { id } = req.params;
-        const bookDetail = book.find(b => b.id === id);
+        const bookDetail = book.find(b => b.id.toString() === id);
         if (bookDetail) {
             return HttpResponse.json(bookDetail, { status: 200 });
         } else {
