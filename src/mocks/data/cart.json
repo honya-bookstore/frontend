@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "title": "Suzume No Tojimari",
     "description": "A touching novel adaptation of Makoto Shinkai’s film, following Suzume’s journey to close mysterious doors that unleash disasters across Japan.",
     "author": "Makoto Shinkai",
@@ -18,7 +18,7 @@
     "dateAdded": "2024-06-10T14:20:00Z"
   },
   {
-    "id": "2",
+    "id": 2,
     "title": "How To Think Like Einstein",
     "description": "A guide to developing creative thinking and problem-solving skills inspired by Albert Einstein’s unique approach to science and life.",
     "author": "Scott Thorpe",

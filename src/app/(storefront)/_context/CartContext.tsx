@@ -3,14 +3,13 @@
 import {createContext, useContext, useState, useMemo, ReactNode, useEffect} from "react";
 import {Book, CartItem} from "@/types/types";
 import cart from "@/mocks/data/cart.json"
-import {worker} from "@/mocks/browser";
 
 interface CartContextType {
     cartItems: CartItem[];
     subtotal: number;
     addToCart: (book: Book) => void;
-    removeFromCart: (bookId: string) => void;
-    updateQuantity: (bookId: string, quantity: number) => void;
+    removeFromCart: (bookId: number) => void;
+    updateQuantity: (bookId: number, quantity: number) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -54,11 +53,11 @@ export function CartContextProvider({children}: {children: ReactNode}) {
         });
     }
 
-    const removeFromCart = (bookId: string) => {
+    const removeFromCart = (bookId: number) => {
         setCartItems((prevItems) => prevItems.filter((item) => item.id !== bookId));
     }
 
-    const updateQuantity = (bookId: string, newQuantity: number) => {
+    const updateQuantity = (bookId: number, newQuantity: number) => {
         setCartItems((prevItems) => {
             return prevItems.map((item) =>
                 item.id === bookId ? {...item, quantity: newQuantity} : item
