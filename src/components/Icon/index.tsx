@@ -49,6 +49,8 @@ export type IconName =
     | 'people'
     | 'heart'
     | 'order-count'
+    | 'expand-more'
+    | 'expand-less';
 
 
 
@@ -101,6 +103,8 @@ const iconMap: Record<IconName, string> = {
     delivery: 'mdi:truck-delivery',
     handshake: 'mdi:handshake',
     popout: 'oui:popout',
+    "expand-more": "ic:round-expand-more",
+    "expand-less": "ic:round-expand-less",
 };
 
 interface iconProps {
