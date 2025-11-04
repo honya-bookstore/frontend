@@ -11,13 +11,13 @@ export default function CMSLayout({
 }) {
     return (
         <UIProvider>
-            <div className="flex h-screen w-screen bg-background">
+            <div className="flex h-screen w-screen overflow-hidden bg-background">
                 <NavigationBar/>
-                <div className={'flex flex-col h-full justify-between w-full'}>
+                <div className={'flex flex-col justify-between w-full'}>
                     <CMSHeader/>
-                    <main className="m-6 mt-4 flex-1 flex flex-col gap-4">
+                    <main className="m-6 mt-4 flex-1 flex flex-col gap-4 overflow-y-auto">
                         <Breadcrumb/>
-                        <div className={'flex-1 overflow-y-auto bg-white rounded-lg shadow-md p-6 '}>
+                        <div className={'overflow-y-auto bg-white rounded-lg shadow-md p-6'}>
                             {children}
                         </div>
                     </main>

@@ -12,6 +12,7 @@
   --color-disabled-color: #ededed;
   --color-background-darker: #edebe4;
   --color-price-color: #74642F;
+  --color-button-blue: #40a3ff;
   --font-inter: var(--font-inter);
   --font-plus-jakarta-sans: var(--font-plus-jakarta-sans);
   --font-prata: var(--font-prata);
@@ -22,4 +23,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), serif;
+}
+
+button {
+  transition: all 300ms;
+  cursor: pointer;
 }
