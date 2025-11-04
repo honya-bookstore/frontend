@@ -1,5 +1,6 @@
 'use client'
 import React from "react"
+import {isRequiredInputField} from "graphql/type";
 
 type ShortFieldProps = {
     label?: string
@@ -24,12 +25,16 @@ export default function ShortField({
     return (
         <div {...props} className="flex flex-col font-plus-jakarta-sans w-full">
             {!hideLabel && label && (
-                <label className="mb-1 text-[16px] text-black">{label}</label>
+                <label className="mb-1 text-[16px] text-black">
+                    {label}
+                    {props.required && <span className="text-red-500 ml-1">*</span>}
+                </label>
             )}
             <input
                 maxLength={charLimit}
                 onChange={onValueChange}
-                className={`border rounded-[10px] focus:border-[#ffffff] border-line-color transition ${
+                placeholder={props.placeholder}
+                className={`border rounded-[10px] focus:outline-none focus:border-blue-500 border-line-color transition ${
                     props.disabled
                         ? "bg-disabled-color text-gray-500 cursor-not-allowed"
                         : "bg-transparent"

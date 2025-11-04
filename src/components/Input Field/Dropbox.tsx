@@ -23,7 +23,7 @@ export default function Dropbox({
     return (
         <div className="flex flex-col font-plus-jakarta-sans w-full">
             {!hideLabel && label && (
-                <label className="mb-1 text-sm font-medium text-gray-700">{label}</label>
+                <label className="mb-1 text-[16px] text-black">{label}</label>
             )}
             <select
                 {...props}
@@ -34,6 +34,7 @@ export default function Dropbox({
                         : "bg-transparent"
                 } ${className || ""}`}
             >
+                <option value="" disabled selected>Select an option</option>
                 {options.map((opt, idx) => (
                     <option key={idx} value={opt}>
                         {opt}
