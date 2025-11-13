@@ -25,6 +25,7 @@ export type IconName =
     | 'delivery'
     | 'handshake'
     | 'right-arrow'
+    | 'loading'
     // CMS
     | 'dashboard'
     | 'category'
@@ -74,6 +75,7 @@ const iconMap: Record<IconName, string> = {
     'star-full': 'iconamoon:star-fill',
     upvote: 'bx:upvote',
     downvote: 'bx:downvote',
+    loading: 'mdi:loading',
     // CMS
     dashboard: 'mdi:view-dashboard-outline',
     category: 'mdi:shape-outline',

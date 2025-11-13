@@ -140,7 +140,7 @@ export default function AddBookPage() {
                         {/* TODO: Preview uploaded image here */}
                         No image selected
                     </div>
-                    <button className={'border-1 border-button-blue hover:bg-gray-200 text-black bg-transparent w-full h-[50px] rounded-[15px]'}>
+                    <button className={'border-1 cursor-pointer border-button-blue hover:bg-gray-200 text-black bg-transparent w-full h-[50px] rounded-[15px]'}>
                         Select Cover
                     </button>
                 </div>

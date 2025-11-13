@@ -57,7 +57,7 @@ export default function Button({
 
     const base =
         "flex items-center justify-center transition-all focus:outline-none " +
-        "select-none disabled:cursor-not-allowed cursor-pointer align-middle text-base";
+        "select-none disabled:opacity-60 disabled:cursor-not-allowed align-middle text-base";
 
     const variants: Record<ButtonVariant, string> = {
         solid: "bg-black text-white hover:bg-gray-800",
@@ -79,7 +79,7 @@ export default function Button({
                 base,
                 variants[variant],
                 shapes[shape],
-                (disabled || loading) && 'opacity-60 cursor-not-allowed',
+                !disabled && !loading && 'cursor-pointer',
                 className
             )}
             style={{

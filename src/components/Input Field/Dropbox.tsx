@@ -28,13 +28,14 @@ export default function Dropbox({
             <select
                 {...props}
                 onChange={onValueChange}
+                defaultValue={""}
                 className={`border rounded-[10px] focus:border-[#ffffff] border-line-color transition ${
                     props.disabled
                         ? "bg-disabled-color text-gray-500 cursor-not-allowed"
                         : "bg-transparent"
                 } ${className || ""}`}
             >
-                <option value="" disabled selected>Select an option</option>
+                <option value="" disabled>Select an option</option>
                 {options.map((opt, idx) => (
                     <option key={idx} value={opt}>
                         {opt}
