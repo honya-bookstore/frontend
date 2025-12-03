@@ -6,7 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "check:type": "tsc --noEmit",
+    "commitlint": "commitlint --edit",
+    "lint:fix": "next lint --fix --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write '*/**/*.{js,jsx,ts,tsx}'",
+    "format:check": "prettier --check '*/**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "@iconify/react": "^6.0.2",
