@@ -72,10 +72,6 @@ jobs:
         run: npm run format:check
         continue-on-error: true
 
-      - name: Report Coverage
-        if: always()
-        uses: davelosert/vitest-coverage-report-action@v2
-
       - name: Fail check if any failed
         run: |
           declare -A check_status=(
