@@ -6,7 +6,7 @@ export default auth((req) => {
   const { nextUrl } = req;
   const { pathname } = req.nextUrl;
 
-  if (!!req.auth) {
+  if (!req.auth?.user) {
     const loginUrl = new URL("/api/auth/signin", nextUrl);
     loginUrl.searchParams.set("callbackUrl", nextUrl.href);
 
@@ -14,7 +14,7 @@ export default auth((req) => {
   }
 
   if (pathname.startsWith("/admin")) {
-    if (req.auth !== UserRole.ADMIN && req.auth?.role !== UserRole.STAFF) {
+    if (req.auth?.role !== UserRole.ADMIN && req.auth?.role !== UserRole.STAFF) {
       return NextResponse.redirect(new URL("/", req.url));
     }
   }
