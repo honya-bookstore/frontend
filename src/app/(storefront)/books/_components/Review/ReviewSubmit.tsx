@@ -8,7 +8,7 @@ import Button from "@/components/Button";
 import ReviewList from "@/app/(storefront)/books/_components/Review/ReviewList";
 
 interface ReviewSubmitProps {
-    bookId: number;
+    bookId: string;
 }
 
 export default function ReviewSubmit({bookId}: ReviewSubmitProps) {

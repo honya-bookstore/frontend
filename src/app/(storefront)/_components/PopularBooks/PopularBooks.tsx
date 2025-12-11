@@ -1,4 +1,4 @@
-import { Book, Category } from "@/types/types";
+import {Book, Category, CategoryResponse} from "@/types/types";
 import SectionTitle from "@/app/(storefront)/_components/SectionTitle";
 import CategorySelector from "@/app/(storefront)/_components/PopularBooks/CategorySelector";
 
@@ -7,14 +7,17 @@ interface PopularBooksProps {
 }
 
 export default async function PopularBooks({ books }: PopularBooksProps) {
-    const res = await fetch("https://api.example.com/category", {cache: "no-store"}) ;
-    const categories: Category[] = await res.json();
-
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {cache: "no-store"});
+    const categoriesData: CategoryResponse = await res.json();
+    const categories: Category[] = categoriesData.data;
     categories.unshift({
-        id: "all",
-        name: "All",
-        description: "All books",
-        slug: "all",
+        id: 'all',
+        name: 'All',
+        description: 'All Books',
+        slug: 'all',
+        createdAt: 'a',
+        updatedAt: 'a',
+        deletedAt: null,
     });
 
     return (

@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import SliderControl from "@/app/(storefront)/_components/Sliders/SliderControl";
 import SliderItem from "@/app/(storefront)/_components/Sliders/SliderItem";
 import SliderDots from "@/app/(storefront)/_components/Sliders/SliderDots";
-import {AnimatePresence, motion, Variants} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 import {sliderVariants} from "@/motion/variants";
 
 interface BestSellingSliderProps {

@@ -1,38 +1,80 @@
+export interface BookCategory {
+    description: string | null,
+    id: string;
+    name: string;
+    slug: string;
+}
+
+export interface BookMedia {
+    altText: string | null;
+    url: string;
+    id: string;
+    isCover: boolean;
+    order: number;
+}
+
 export interface Book {
-    id: number,
-    title: string,
-    description: string,
-    author: string,
-    price: number,
-    pageCount: number,
-    yearPublished: number,
-    category: string[],
-    publisher: string,
-    weight: number,
-    coverImageUrl: string,
-    imageUrls: string[],
-    stock: number,
-    sold: number,
-    dateAdded: string,
+    categories: BookCategory[];
+    media: BookMedia[];
+    author: string;
+    createdAt: string;
+    deletedAt: string | null;
+    description: string | null;
+    id: string;
+    pagesCount: number;
+    price: number;
+    publisher: string;
+    purchaseCount: number;
+    rating: number;
+    stockQuantity: number;
+    title: string;
+    updatedAt: string;
+    weight: number;
+    yearPublished: number;
 }
 
 export interface Category {
-    id: number,
+    id: string,
     name: string,
-    description: string,
     slug: string,
+    description: string | null,
+    createdAt: string,
+    updatedAt: string,
+    deletedAt: string | null,
+}
+
+export interface OrderItemBook {
+    id: string,
+    author: string,
+    price: number,
+    rating: number,
+    stockQuantity: number,
+    title: string,
+}
+
+export interface OrderItem {
+    book: OrderItemBook,
+    id: string,
+    price: number,
+    quantity: number,
 }
 
 export interface Order {
-    id: number,
-    userId: string,
-    bookIds: number[],
-    totalPrice: number,
     address: string,
-    paymentMethod: string,
-    status: string,
-    phoneNumber: string,
-    date: string,
+    city: string,
+    createdAt: string,
+    email: string,
+    firstName: string,
+    id: string,
+    isPaid: boolean,
+    items: OrderItem[],
+    lastName: string,
+    paymentUrl: string,
+    provider: 'COD' | 'VNPAY' | 'MOMO',
+    status: 'Pending' | 'Processing' | 'Shipping' | 'Delivered' | 'Cancelled',
+    totalAmount: number,
+    updatedAt: string,
+    userId: string,
 }
 
 export interface Article {
@@ -60,15 +102,17 @@ export interface User {
 }
 
 export interface Media {
-    id: number,
+    id: string,
+    altText: string | null,
     userId: string,
-    fileName: string,
+    order: number,
     url: string,
-    uploadedAt: string,
+    createdAt: string,
+    deletedAt: string | null,
 }
 
 export interface Ticket {
-    id: number;
+    id: string;
     userId: string;
     title: string;
     category: string;
@@ -81,8 +125,8 @@ export interface Ticket {
 }
 
 export interface Review {
-    id: number;
-    bookId: number;
+    id: string;
+    bookId: string;
     userId: string;
     rating: number;
     content: string;
@@ -90,11 +134,44 @@ export interface Review {
     updatedAt: string;
 }
 
-export interface CartItem extends Book {
+export interface CartItemBook {
+    author: string | null;
+    description: string | null;
+    id: string;
+    pagesCount: number | null
+    price: number;
+    publisher: string;
+    purchaseCount: number;
+    yearPublished: number;
+}
+
+export interface CartItem {
+    book: CartItemBook;
+    id: string;
     quantity: number;
 }
 
 export interface Cart {
-    items: CartItem[];
+    id: string,
+    items: CartItem[],
+    updatedAt: string,
+    userId: string,
 }
 
+interface ResponseMetadata {
+    currentPage: number;
+    itemsPerPage: number;
+    pageItems?: number;
+    totalItems: number;
+    totalPages: number;
+}
+
+export interface BookResponse {
+    data: Book[];
+    meta: ResponseMetadata;
+}
+
+export interface CategoryResponse {
+    data: Category[];
+    meta: ResponseMetadata;
+}

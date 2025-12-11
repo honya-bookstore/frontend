@@ -1,4 +1,4 @@
-import Breadcrumb from "@/app/(storefront)/_components/Breadcrumb/Breadcrumb";
+import Breadcrumb, {BreadcrumbItemType} from "@/app/(storefront)/_components/Breadcrumb/Breadcrumb";
 import BookDetailSection from "@/app/(storefront)/books/_components/BookDetailSection";
 import {Book} from "@/types/types";
 import BookDescriptionSection from "@/app/(storefront)/books/_components/BookDescriptionSection";
@@ -6,13 +6,21 @@ import BookReviewSection from "@/app/(storefront)/books/_components/BookReviewSe
 
 export default async function BookDetailPage({ params }: { params : { id: number } }) {
     const { id } = await params;
-    const res = await fetch(`http://api.example.com/book/${id}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`, { cache: 'no-store' });
+    if (!res.ok) {
+        throw new Error('Failed to fetch book details');
+    }
     const book: Book = await res.json();
+
+    const breadcrumbItems: BreadcrumbItemType[] = [
+        { label: 'Books', href: '/books' },
+        { label: book.title, href: `/books/${book.id}` },
+    ]
 
     return (
         <main className={'py-10 w-full flex flex-col gap-10 items-center'}>
             <div className={'mx-auto w-4/5'}>
-                <Breadcrumb/>
+                <Breadcrumb items={breadcrumbItems} />
             </div>
             <BookDetailSection book={book}/>
             <BookDescriptionSection description={book.description}/>

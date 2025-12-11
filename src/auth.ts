@@ -12,13 +12,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     authorized({ auth }) {
       return !!auth?.user;
     },
-    async jwt({ token, account, profile, user }) {
+    async jwt({ token, account, profile }) {
+      token.userId = token.userId || profile?.sub || "";
+      token.firstName = token.firstName || profile?.given_name || "";
+      token.lastName = token.lastName || profile?.family_name || "";
       if (account?.access_token) {
         token.accessToken = account.access_token;
       }
       if (profile?.realm_access) {
         token.role = profile.realm_access.roles.filter((role: string) =>
-          Object.values(UserRole).includes(role as UserRole),
+            Object.values(UserRole).includes(role as UserRole),
         )[0] as UserRole | null;
       }
       if (!token.address && profile?.address) {
@@ -37,6 +40,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.role = token.role;
       session.address = token.address;
       session.phoneNumber = token.phoneNumber;
+      session.firstName = token.firstName;
+      session.lastName = token.lastName;
+      if (token.sub) {
+        session.user.id = token.userId;
+      }
       return session;
     },
   },

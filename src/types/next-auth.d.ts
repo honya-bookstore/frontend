@@ -15,6 +15,8 @@ declare module "next-auth" {
 
     export interface Session {
         userId: string;
+        firstName: string;
+        lastName: string;
         accessToken: string;
         role: UserRole | null;
         address: {
@@ -35,5 +37,7 @@ declare module "next-auth/jwt" {
             locality: string;
         };
         phoneNumber: string;
+        firstName: string;
+        lastName: string;
     }
 }

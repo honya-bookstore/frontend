@@ -6,7 +6,7 @@ import Icon from "@/components/Icon";
 //TODO: fetch review vote, implement api calls for add vote, remove vote, and change vote
 
 interface ReviewControlProps {
-    reviewId: number;
+    reviewId: string;
     initialVoteCount: number;
     initialUserVote: 'upvote' | 'downvote' | null;
 }

@@ -2,7 +2,7 @@ import ReviewSubmit from "@/app/(storefront)/books/_components/Review/ReviewSubm
 import ReviewList from "@/app/(storefront)/books/_components/Review/ReviewList";
 
 interface BookReviewSectionProps {
-    bookId: number;
+    bookId: string;
 }
 
 export default function BookReviewSection({bookId}: BookReviewSectionProps) {

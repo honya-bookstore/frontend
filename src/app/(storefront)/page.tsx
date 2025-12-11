@@ -1,4 +1,4 @@
-import {Book} from "@/types/types";
+import {Book, BookResponse} from "@/types/types";
 import Slider from "@/app/(storefront)/_components/Sliders/Slider";
 import {Suspense} from "react";
 import Icon from "@/components/Icon";
@@ -9,11 +9,14 @@ import PopularBooks from "@/app/(storefront)/_components/PopularBooks/PopularBoo
 import Image from "next/image";
 import BooksWithOffer from "@/app/(storefront)/_components/BooksWithOffer/BooksWithOffer";
 
+export const dynamic = 'force-dynamic';
+
 export default async function landingPage() {
     // fetch books
-    const res = await fetch("https://api.example.com/book");
-    const books: Book[] = await res.json();
-    const bestSellingBooks = books.sort((a, b) => b.sold - a.sold).slice(0, 4);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`, {cache: 'no-store'});
+    const data: BookResponse = await res.json();
+    const books = data.data;
+    const bestSellingBooks = books.sort((a, b) => b.purchaseCount - a.purchaseCount).slice(0, 4);
     return (
         <main className={'flex flex-col w-full items-center'}>
             <Suspense fallback={<div>Loading...</div>}>

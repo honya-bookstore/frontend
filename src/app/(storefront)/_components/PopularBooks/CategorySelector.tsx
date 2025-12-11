@@ -16,11 +16,11 @@ export default function CategorySelector({ categories, books }: CategorySelector
         selected === "all"
             ? books
             : books.filter((b) =>
-                b.category.some(
-                    (c) => c.toLowerCase() === categories.find((cat) => cat.id === selected)?.name.toLowerCase()
+                b.categories.some(
+                    (c) => c.id === categories.find((cat) => cat.id === selected)?.id
                 )
             );
-    filteredBooks = filteredBooks.sort((a, b) => b.sold - a.sold).slice(0, 8);
+    filteredBooks = filteredBooks.sort((a, b) => b.purchaseCount - a.purchaseCount).slice(0, 8);
 
     return (
         <div className="flex flex-col items-center w-full gap-8">

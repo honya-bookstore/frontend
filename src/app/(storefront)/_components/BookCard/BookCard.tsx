@@ -4,6 +4,7 @@ import Image from "next/image";
 import {useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 import Link from "next/link";
+import {getBookCover} from "@/lib/utils";
 
 interface BookCardProps {
     discount?: number;
@@ -13,6 +14,7 @@ interface BookCardProps {
 
 export default function BookCard({book, discount = 0, showCartButton = false}: BookCardProps) {
     const [isHovered, setIsHovered] = useState(false);
+    console.log(getBookCover(book));
     return (
         <div className={'flex flex-col items-center justify-center bg-transparent w-fit gap-4 relative'}>
             {discount !== 0 && (
@@ -23,7 +25,7 @@ export default function BookCard({book, discount = 0, showCartButton = false}: B
             <div className={'book-cover flex p-8 bg-[#efeee8] rounded-lg relative transition-all duration-200'}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
-                <Image src={`/${book.coverImageUrl}`} alt={"cover"} width={250} height={390} className={'overflow-hidden h-[250px] w-auto shadow-xl'} />
+                <Image src={getBookCover(book)} alt={"cover"} width={250} height={390} className={'overflow-hidden h-[250px] w-auto shadow-xl object-contain'} />
                 {showCartButton && isHovered && (
                     <>
                         <motion.div className={'absolute w-full h-full left-0 bottom-0 bg-white opacity-10'}

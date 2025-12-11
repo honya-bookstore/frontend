@@ -17,7 +17,7 @@ export default function BookDetailSection({ book }: BookDetailSectionProps) {
     const [thumbPage, setThumbPage] = useState(0);
     const [direction, setDirection] = useState(0);
 
-    const imageUrls = [book.coverImageUrl, ...(book.imageUrls || [])];
+    const imageUrls = book.media.map((img) => img.url);
     const visibleThumbs = 4;
     const totalPages = useMemo(() => {
         return Math.ceil(imageUrls.length / visibleThumbs);

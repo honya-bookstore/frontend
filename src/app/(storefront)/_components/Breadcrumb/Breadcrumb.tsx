@@ -1,12 +1,20 @@
 'use client';
 import { usePathname } from "next/navigation";
-import { BreadcrumbSegment, generateBreadcrumbs } from "@/lib/breadcrumb-utils";
+import { BreadcrumbSegment } from "@/lib/breadcrumb-utils";
 import Link from "next/link";
-import Icon from "@/components/Icon";
 
-export default function Breadcrumb() {
-    const pathname = usePathname();
-    const breadcrumbs: BreadcrumbSegment[] = generateBreadcrumbs(pathname);
+export interface BreadcrumbItemType {
+    label: string;
+    href: string;
+}
+
+interface BreadcrumbProps {
+    items: BreadcrumbItemType[];
+    separator?: React.ReactNode;
+}
+
+export default function Breadcrumb({ items }: BreadcrumbProps) {
+    const breadcrumbs: BreadcrumbSegment[] = generateBreadcrumbs(items);
     breadcrumbs.unshift(
         { name: 'Home', href: '/' }
     )
@@ -25,3 +33,11 @@ export default function Breadcrumb() {
         </nav>
     )
 }
+
+ const generateBreadcrumbs = (items: BreadcrumbItemType[]): BreadcrumbSegment[] => {
+    return items.map((item) => ({
+        name: item.label,
+        href: item.href,
+    })
+    );
+ }

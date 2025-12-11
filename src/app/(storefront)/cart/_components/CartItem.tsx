@@ -5,8 +5,8 @@ import Button from "@/components/Button";
 
 interface CartItemProps {
     item: CartItemType;
-    onQuantityChange: (bookId: string, newQuantity: number) => void;
-    onRemove: (bookId: string) => void;
+    onQuantityChange: (bookId: number, newQuantity: number) => void;
+    onRemove: (bookId: number) => void;
 }
 
 export default function CartItem({item, onQuantityChange, onRemove}: CartItemProps) {
