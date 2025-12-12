@@ -23,7 +23,7 @@ export default auth((req) => {
 
   return NextResponse.next({
     request: {
-      reqHeaders,
+        headers: reqHeaders,
     },
   });
 });
