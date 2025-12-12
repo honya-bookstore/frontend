@@ -6,18 +6,6 @@ import Link from "next/link";
 
 export default function LayoutClient({ children } : { children: React.ReactNode }) {
     const cartContext = useCart();
-
-    if (cartContext.isLoading) {
-        return (
-            <main className={'flex flex-col items-center justify-start gap-8 py-20 w-2/3'}>
-                <div className={'flex flex-col items-center justify-center gap-6'}>
-                    <span className={'font-prata text-[28px] w-full text-center'}>
-                        Loading...
-                    </span>
-                </div>
-            </main>
-        )
-    }
     
     return (
         <main className={'flex flex-col items-center justify-start gap-8 py-20 w-2/3'}>
@@ -26,7 +14,6 @@ export default function LayoutClient({ children } : { children: React.ReactNode 
                     <span className={'font-prata text-[28px] w-full text-center'}>
                         Your cart is empty
                     </span>
-                    <Icon name={"empty-cart"} className={'w-40 h-40 text-gray-400'}/>
                     <span className={'font-plus-jakarta-sans text-[18px] text-gray-600 text-center'}>
                         Looks like you haven&#39;t added anything to your <Link className={'text-blue-600 underline'} href={'/cart'}>cart</Link> yet.
                     </span>
