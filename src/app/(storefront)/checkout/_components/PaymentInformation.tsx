@@ -25,7 +25,7 @@ export default function PaymentInformation() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${session.data?.user?.accessToken}`,
+                authorization: `Bearer ${session.data?.accessToken}`,
             },
             body: JSON.stringify({
                 ...orderContext.orderInformation,
@@ -40,7 +40,7 @@ export default function PaymentInformation() {
 
         const data = await res.json();
         if (paymentMethod === 'credit-card') {
-            window.location.href(`https://sandbox.vnpayment.vn/paymentv2/vpcpay.html/${data.paymentUrl}`);
+            window.location.href = `https://sandbox.vnpayment.vn/paymentv2/vpcpay.html/${data.paymentUrl}`;
             setIsProcessing(true);
         } else {
             toast.success('Order placed successfully.');

@@ -48,7 +48,8 @@ export default function ShippingInformation() {
             phone: data.phone.replace('0', '+84'),
             city: data.city,
             userId: session.data?.user?.id || '',
-            returnUrl: window.location.origin
+            returnUrl: window.location.origin,
+            provider: "COD",
         });
         window.location.href = '/checkout/payment';
     }

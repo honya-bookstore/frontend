@@ -41,7 +41,7 @@ export default function BookCard({book, discount = 0, showCartButton = false}: B
                                        animate={{opacity: 1}}
                                        exit={{opacity: 0}}
                                        transition={{duration: 0.2}}
-                                       onClick={() => addToCart(book, 1)}
+                                       onClick={() => addToCart(book)}
                         >
                             ADD TO CART
                         </motion.button>

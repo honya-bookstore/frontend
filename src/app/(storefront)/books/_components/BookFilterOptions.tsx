@@ -3,7 +3,7 @@
 import {useState} from "react";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 
-export default function BookFilterOptions {
+export default function BookFilterOptions() {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
