@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Prata, Cormorant_Unicase } from "next/font/google";
 import "./globals.css";
+import {SessionProvider} from "next-auth/react";
 
 const interFont = Inter({
     subsets: ["latin"],
@@ -45,7 +46,9 @@ export default function RootLayout({
       <body
         className={`${interFont.variable} ${plusJakartaSansFont.variable} ${prataFont.variable} ${cormorantUnicaseFont.variable}`}
       >
-        {children}
+        <SessionProvider>
+            {children}
+        </SessionProvider>
       </body>
     </html>
   );

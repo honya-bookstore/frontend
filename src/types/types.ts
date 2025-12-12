@@ -138,10 +138,15 @@ export interface CartItemBook {
     author: string | null;
     description: string | null;
     id: string;
+    medium: BookMedia[];
+    title: string;
     pagesCount: number | null
     price: number;
     publisher: string;
     purchaseCount: number;
+    rating: number;
+    stockQuantity: number;
+    weight: number | null;
     yearPublished: number;
 }
 

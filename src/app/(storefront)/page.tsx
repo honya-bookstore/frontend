@@ -8,8 +8,14 @@ import BestSellingBook from "@/app/(storefront)/_components/BestSellingBook/Best
 import PopularBooks from "@/app/(storefront)/_components/PopularBooks/PopularBooks";
 import Image from "next/image";
 import BooksWithOffer from "@/app/(storefront)/_components/BooksWithOffer/BooksWithOffer";
+import { Metadata } from "next";
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'Home',
+    description: 'Welcome to Honya Bookstore - Your one-stop shop for the latest and greatest books across all genres. Discover your next favorite read with us!',
+}
 
 export default async function landingPage() {
     // fetch books

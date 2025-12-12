@@ -6,8 +6,10 @@ import CartItem from "@/app/(storefront)/cart/_components/CartItem";
 import Button from "@/components/Button";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic';
+
 export default function CartPage() {
-    const { cartItems, subtotal, addToCart, removeFromCart, updateQuantity } = useCart();
+    const { cartItems, subtotal, removeFromCart, updateQuantity } = useCart();
     return (
         <main className={'flex flex-col items-center justify-start gap-8 py-20 w-2/3'}>
             <span className={'font-prata text-[28px] w-full'}>
@@ -30,7 +32,7 @@ export default function CartPage() {
                     }
                 </div>
                 <div
-                    className={'flex flex-col items-center justify-center p-[10px] gap-6 bg-white h-fit rounded-lg w-fit'}>
+                    className={'flex flex-col items-center justify-center p-[10px] gap-6 bg-white h-fit rounded-lg w-fit border-1'}>
                     <span className={'text-[24px] font-prata'}>Order Summary</span>
                     <div className={'flex flex-col font-plus-jakarta-sans text-[20px] min-w-[300px] px-[10px] gap-3'}>
                         <div className={'flex justify-between'}>
@@ -56,6 +58,7 @@ export default function CartPage() {
                             <Button
                                 shape={'rect'}
                                 variant={'solid'}
+                                disabled={cartItems.length === 0}
                                 width={300}
                                 height={60}
                                 className={'bg-black text-white hover:bg-gray-700 font-plus-jakarta-sans font-light text-[18px]'}>

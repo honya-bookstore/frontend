@@ -3,8 +3,14 @@ import Dropbox from "@/components/Input Field/Dropbox";
 import BookCard from "@/app/(storefront)/_components/BookCard/BookCard";
 import BookPageOptions from "@/app/(storefront)/books/_components/BookPageOptions";
 import {BookResponse} from "@/types/types";
+import {Metadata} from "next";
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+    title: 'Books',
+    description: 'Explore our extensive collection of books across various genres. Find your next favorite read today!',
+}
 
 interface BookPageProps {
     searchParams: {

@@ -6,6 +6,7 @@ import {AnimatePresence, motion} from "framer-motion";
 import {sliderVariants} from "@/motion/variants";
 import Icon from "@/components/Icon";
 import Button from "@/components/Button";
+import {useCart} from "@/app/(storefront)/_context/CartContext";
 
 
 interface BookDetailSectionProps {
@@ -13,6 +14,7 @@ interface BookDetailSectionProps {
 }
 
 export default function BookDetailSection({ book }: BookDetailSectionProps) {
+    const cartContext = useCart();
     const [current, setCurrent] = useState(0);
     const [thumbPage, setThumbPage] = useState(0);
     const [direction, setDirection] = useState(0);
@@ -126,7 +128,7 @@ export default function BookDetailSection({ book }: BookDetailSectionProps) {
                         {book.description}
                     </span>
                     <span className={'font-prata text-price-color text-[30px] tracking-wide'}>$ {book.price.toFixed(2)}</span>
-                    <Button variant={"solid"} shape={'rect'} width={280} height={60} icon={'cart'} iconSize={30} iconPosition={'left'}
+                    <Button onClick={() => cartContext.addToCart(book)} variant={"solid"} shape={'rect'} width={280} height={60} icon={'cart'} iconSize={30} iconPosition={'left'}
                             className={'font-plus-jakarta-sans text-[20px] rounded-[20px]'}>
                         Add to Cart
                     </Button>

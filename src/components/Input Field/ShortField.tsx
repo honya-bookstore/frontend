@@ -1,6 +1,7 @@
 'use client'
 import React from "react"
 import {isRequiredInputField} from "graphql/type";
+import {FieldError} from "react-hook-form";
 
 type ShortFieldProps = {
     label?: string

@@ -3,10 +3,52 @@ import {useState} from "react";
 import Link from "next/link";
 import Button from "@/components/Button";
 import {Icon} from "@iconify/react";
+import {useOrder} from "@/app/(storefront)/_context/OrderContext";
+import {useSession} from "next-auth/react";
+import {toast} from "sonner";
 
-// TODO: Add link href to external payment gateway
 export default function PaymentInformation() {
+    const orderContext = useOrder();
+    const session = useSession();
+
     const [paymentMethod, setPaymentMethod] = useState<string>('credit-card');
+    const [isProcessing, setIsProcessing] = useState<boolean>(false);
+    const [isDone, setIsDone] = useState<boolean>(false);
+
+    const handleProceed = async () => {
+        orderContext.setOrderInformation({
+            ...orderContext.orderInformation!,
+            provider: paymentMethod === 'credit-card' ? 'VNPAY' : 'COD',
+        });
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${session.data?.user?.accessToken}`,
+            },
+            body: JSON.stringify({
+                ...orderContext.orderInformation,
+                provider: paymentMethod === 'credit-card' ? 'VNPAY' : 'COD',
+            }),
+        })
+
+        if (!res.ok) {
+            const errorData = await res.json();
+            throw new Error(errorData.message || 'Failed to create order');
+        }
+
+        const data = await res.json();
+        if (paymentMethod === 'credit-card') {
+            window.location.href(`https://sandbox.vnpayment.vn/paymentv2/vpcpay.html/${data.paymentUrl}`);
+            setIsProcessing(true);
+        } else {
+            toast.success('Order placed successfully.');
+            setIsDone(true);
+            window.location.href = '/checkout/payment/success?orderId=' + data.id;
+        }
+    }
+
     return (
         <section className={'w-full flex flex-col items-start gap-6 bg-white px-[15px] py-[25px] rounded-lg'}>
             <h4 className={'text-[26px] font-prata'}>Payment Information</h4>
@@ -21,7 +63,7 @@ export default function PaymentInformation() {
                         onChange={() => setPaymentMethod('credit-card')}
                     />
                     <Icon icon={'mdi:credit-card-outline'} className={'w-6 h-6 inline-block -mr-2'}/>
-                    Credit Card
+                    Credit Card (VNPAY)
                 </label>
                 <label className={'flex items-center gap-4'}>
                     <input
@@ -31,7 +73,7 @@ export default function PaymentInformation() {
                         checked={paymentMethod === 'cash-on-delivery'}
                         onChange={() => setPaymentMethod('cash-on-delivery')}
                     />
-                    Cash on Delivery
+                    Cash on Delivery (COD)
                 </label>
             </div>
             <div className={'w-full flex items-start justify-between gap-4 '}>
@@ -43,11 +85,12 @@ export default function PaymentInformation() {
                         Back
                     </Button>
                 </Link>
-                <Link href={``} className={'mt-4 w-full'}>
+                <div className={'mt-4 w-full'}>
                     {paymentMethod === 'cash-on-delivery' ? (
                         <Button
                             shape={'rect'}
                             variant={'solid'}
+                            onClick={handleProceed}
                             className={'bg-black text-white hover:bg-gray-700 font-plus-jakarta-sans font-light text-[18px] w-full py-4'}>
                             Proceed
                         </Button>
@@ -57,12 +100,13 @@ export default function PaymentInformation() {
                             variant={'solid'}
                             icon={'popout'}
                             iconPosition={'left'}
+                            onClick={handleProceed}
                             iconSize={25}
                             className={'bg-black text-white hover:bg-gray-700 font-plus-jakarta-sans font-light text-[18px] w-full py-4'}>
                             Proceed
                         </Button>
                     )}
-                </Link>
+                </div>
             </div>
         </section>
     )

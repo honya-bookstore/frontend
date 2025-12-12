@@ -4,6 +4,7 @@ import ShortField from "@/components/Input Field/ShortField";
 import Icon from "@/components/Icon";
 import book from "@/mocks/data/book.json"
 import Image from "next/image";
+import {getBookCover} from "@/lib/utils";
 
 export default function BookList() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -53,7 +54,7 @@ export default function BookList() {
                         className="hover:bg-gray-50 transition-colors duration-200"
                     >
                         <td className="px-4 py-3 border-gray-100">
-                            <Image src={getBookCover(book)} alt={book.title} width={100} height={130} className="w-auto h-24 object-cover rounded-md shadow-sm"/>
+                            <Image src={getBookCover(book.media)} alt={book.title} width={100} height={130} className="w-auto h-24 object-cover rounded-md shadow-sm"/>
                         </td>
                         <td className="px-4 py-3 border-gray-100 font-medium">{book.title}</td>
                         <td className="px-4 py-3 border-gray-100">{book.author}</td>
