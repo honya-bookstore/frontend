@@ -59,10 +59,10 @@ export default function BookCard({book, discount = 0, showCartButton = false}: B
                     {discount === 0 ? book.price.toLocaleString("vi-VN", {
                     style: "currency",
                     currency: "VND",
-                }) : (book.price.toLocaleString("vi-VN", {
-                    style: "currency",
-                    currency: "VND",
-                }) * (1 - discount / 100)).toFixed(2)}
+                }) : (book.price * (1 - discount / 100)).toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                    })}
                 </span>
             </div>
         </div>

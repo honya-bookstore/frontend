@@ -35,7 +35,7 @@ export default function BooksWithOffer({books}: BooksWithOfferProps) {
     const rows: Book[][] = [[books[0], books[1], books[2], books[3]], [books[4], books[5], books[6], books[7]]];
 
     return (
-        <section className={'flex flex-col items-center justify-center gap-[40px] py-12 bg-background-darker w-full overflow-hidden w-full'}>
+        <section className={'flex flex-col items-center justify-center gap-[40px] py-12 bg-page-background-darker w-full overflow-hidden w-full'}>
             <SectionTitle title={'Books With Offer'} helper={'GRAB YOUR OPPORTUNITY'}/>
             <AnimatePresence custom={direction} mode={"wait"}>
                 <motion.div className={'flex w-full gap-10 flex-wrap justify-center'}
