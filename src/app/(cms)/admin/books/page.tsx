@@ -58,7 +58,10 @@ export default function BookList() {
                         </td>
                         <td className="px-4 py-3 border-gray-100 font-medium">{book.title}</td>
                         <td className="px-4 py-3 border-gray-100">{book.author}</td>
-                        <td className="px-4 py-3 border-gray-100 text-center">{book.price}</td>
+                        <td className="px-4 py-3 border-gray-100 text-center">{book.price.toLocaleString("vi-VN", {
+                            style: "currency",
+                            currency: "VND",
+                        })}</td>
                         <td className="px-4 py-3 border-gray-100 text-center">{book.pageCount}</td>
                         <td className="px-4 py-3 border-gray-100">{book.category}</td>
                         <td className="px-4 py-3 border-gray-100">{book.publisher}</td>

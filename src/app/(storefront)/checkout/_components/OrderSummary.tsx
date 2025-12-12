@@ -13,7 +13,10 @@ export default function OrderSummary() {
                         <div key={index} className={'flex-col flex'}>
                             <div className={'flex justify-between gap-10 font-prata text-[14px] text-black'}>
                                 <span className={'line-clamp-1'}>{item.book.title}</span>
-                                <span className={'line-clamp-1'}>{item.book.price * item.quantity}$</span>
+                                <span className={'line-clamp-1'}>{(item.book.price * item.quantity).toLocaleString("vi-VN", {
+                                    style: "currency",
+                                    currency: "VND",
+                                })}</span>
                             </div>
                             <span className={'font-plus-jakarta-sans text-[12px] text-gray-500'}>
                                 Qty: {item.quantity}

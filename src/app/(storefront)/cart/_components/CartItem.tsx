@@ -17,7 +17,10 @@ export default function CartItem({item, onQuantityChange, onRemove}: CartItemPro
             <div className={'flex flex-col gap-4 font-prata'}>
                 <span className={'text-[24px] line-clamp-1'}>{item.book.title}</span>
                 <span className={'font-plus-jakarta-sans text-[20px]'}>by {item.book.author}</span>
-                <span className={'text-price-color text-[24px]'}>${item.book.price.toFixed(2)}</span>
+                <span className={'text-price-color text-[24px]'}>{item.book.price.toLocaleString("vi-VN", {
+                    style: "currency",
+                    currency: "VND",
+                })}</span>
                 <div className={'flex items-center justify-between w-[120px] border-line-color border-1'}>
                     <Button
                         width={36}

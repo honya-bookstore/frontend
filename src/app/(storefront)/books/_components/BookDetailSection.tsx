@@ -127,7 +127,10 @@ export default function BookDetailSection({ book }: BookDetailSectionProps) {
                     <span className={'font-plus-jakarta-sans tracking-wider text-[16px] leading-7 text-justify text-[#7a7a7a] line-clamp-2'}>
                         {book.description}
                     </span>
-                    <span className={'font-prata text-price-color text-[30px] tracking-wide'}>$ {book.price.toFixed(2)}</span>
+                    <span className={'font-prata text-price-color text-[30px] tracking-wide'}>{book.price.toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                    })}</span>
                     <Button onClick={() => cartContext.addToCart(book)} variant={"solid"} shape={'rect'} width={280} height={60} icon={'cart'} iconSize={30} iconPosition={'left'}
                             className={'font-plus-jakarta-sans text-[20px] rounded-[20px]'}>
                         Add to Cart

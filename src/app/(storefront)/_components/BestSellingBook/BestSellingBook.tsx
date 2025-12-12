@@ -27,7 +27,10 @@ export default function BestSellingBook({book} : BestSellingBookProps){
                 <div className={'w-full flex flex-col text-left gap-2'}>
                     <span className={'font-prata text-[30px]'}>{book.title}</span>
                     <span className={'font-plus-jakarta-sans text-[16px] text-[#7a7a7a] line-clamp-3 overflow-hidden'}>{book.description}</span>
-                    <span className={'font-prata text-[30px] text-price-color mt-4'}>$ {book.price.toFixed(2)}</span>
+                    <span className={'font-prata text-[30px] text-price-color mt-4'}>{book.price.toLocaleString("vi-VN", {
+                        style: "currency",
+                        currency: "VND",
+                    })}</span>
                 </div>
                 <Link href={`/books/${book.id}`}>
                     <Button

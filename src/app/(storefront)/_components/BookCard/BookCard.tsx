@@ -56,7 +56,13 @@ export default function BookCard({book, discount = 0, showCartButton = false}: B
                     {book.author}
                 </span>
                 <span className={'font-prata text-[21px] text-center mt-2 text-price-color tracking-wide'}>
-                    $ {discount === 0 ? book.price.toFixed(2) : (book.price * (1 - discount / 100)).toFixed(2)}
+                    {discount === 0 ? book.price.toLocaleString("vi-VN", {
+                    style: "currency",
+                    currency: "VND",
+                }) : (book.price.toLocaleString("vi-VN", {
+                    style: "currency",
+                    currency: "VND",
+                }) * (1 - discount / 100)).toFixed(2)}
                 </span>
             </div>
         </div>
