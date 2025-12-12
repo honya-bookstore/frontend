@@ -104,7 +104,6 @@ export interface User {
 export interface Media {
     id: string,
     altText: string | null,
-    userId: string,
     order: number,
     url: string,
     createdAt: string,
@@ -178,5 +177,10 @@ export interface BookResponse {
 
 export interface CategoryResponse {
     data: Category[];
+    meta: ResponseMetadata;
+}
+
+export interface MediaResponse {
+    data: Media[];
     meta: ResponseMetadata;
 }
