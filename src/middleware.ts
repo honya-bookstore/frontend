@@ -5,6 +5,8 @@ import { UserRole } from "@/types/roles";
 export default auth((req) => {
   const { nextUrl } = req;
   const { pathname } = req.nextUrl;
+  const reqHeaders = new Headers(req.headers);
+    reqHeaders.set("x-url", req.nextUrl.pathname);
 
   if (!req.auth?.user) {
     const loginUrl = new URL("/api/auth/signin", nextUrl);
@@ -19,7 +21,11 @@ export default auth((req) => {
     }
   }
 
-  return NextResponse.next();
+  return NextResponse.next({
+    request: {
+      reqHeaders,
+    },
+  });
 });
 
 export const config = {
@@ -27,3 +33,6 @@ export const config = {
     "/((?!api|_next/static|_next/image|assets|favicon.svg|sitemap.xml|robots.txt).*)",
   ],
 };
+
+// provide path for server components
+// https://www.propelauth.com/post/getting-url-in-next-server-components
