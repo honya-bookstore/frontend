@@ -2,8 +2,11 @@ import Breadcrumb, {BreadcrumbItemType} from "@/app/(storefront)/_components/Bre
 import Dropbox from "@/components/Input Field/Dropbox";
 import BookCard from "@/app/(storefront)/_components/BookCard/BookCard";
 import BookPageOptions from "@/app/(storefront)/books/_components/BookPageOptions";
-import {BookResponse} from "@/types/types";
+import {BookResponse, CategoryResponse} from "@/types/types";
 import {Metadata} from "next";
+import BookFilterOptions from "@/app/(storefront)/books/_components/BookFilterOptions";
+import {CustomPagination} from "@/components/Pagination/CustomPagination";
+import {getCategories} from "@/app/(cms)/admin/categories/page";
 
 export const dynamic = 'force-dynamic';
 
@@ -52,6 +55,9 @@ export default async function BooksPage({ searchParams }: BookPageProps) {
     const data: BookResponse = await res.json();
     const books = data.data;
 
+    const categoryData: CategoryResponse = await getCategories(1);
+    const categories = categoryData.data
+
     const breadcrumbItems: BreadcrumbItemType[] = [
         { label: 'Books', href: '/products' },
         ]
@@ -59,14 +65,18 @@ export default async function BooksPage({ searchParams }: BookPageProps) {
     return (
         <main className={'flex flex-col items-start justify-start gap-8 pt-10 pb-20 max-w-7xl'}>
             <div className={'w-full'}>
-                <Breadcrumb items={breadcrumbItems} />
+                <Breadcrumb items={breadcrumbItems}/>
             </div>
-            <BookPageOptions/>
-            <section className={'w-full grid xl:grid-cols-4 grid-rows-2 lg:grid-cols-3 md:grid-cols-2 gap-8'}>
+            <span className={'font-prata text-[35px] items-center'}>Books</span>
+            <BookFilterOptions categories={categories}/>
+            <section className={'w-full grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-8'}>
                 {books.map((book) => (
                     <BookCard key={book.id} book={book} showCartButton={true}/>
                 ))}
             </section>
+            <div className={'self-end'}>
+                <CustomPagination totalPages={data.meta.totalPages}/>
+            </div>
         </main>
     )
 }

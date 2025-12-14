@@ -61,9 +61,8 @@ export default function BookPageOptions() {
     return (
         <div className={'w-full flex flex-col'}>
             <div className={'flex gap-10'}>
-                <span className={'font-prata text-[35px] items-center'}>Books</span>
                 <Select value={currentSortValue} onValueChange={handleChange}>
-                    <SelectTrigger className={"w-48"}>
+                    <SelectTrigger className={"w-full !h-[50px] !bg-white rounded-[10px] border border-gray-200"}>
                         <SelectValue placeholder="Sắp xếp theo" />
                     </SelectTrigger>
                     <SelectContent>
