@@ -30,7 +30,7 @@ export default function LongField({
                     {...props}
                     maxLength={charLimit}
                     onChange={onValueChange}
-                    className={`w-full border rounded-[10px] focus:outline-none focus:border-blue-500 border-line-color transition pr-12 ${
+                    className={`w-full border rounded-[10px] focus:outline-none leading-normal focus:border-blue-500 border-line-color transition pr-12 ${
                         props.disabled
                             ? "bg-disabled-color text-gray-500 cursor-not-allowed"
                             : "bg-transparent"

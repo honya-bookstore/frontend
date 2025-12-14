@@ -22,7 +22,7 @@ type ButtonProps = {
     onClick?: () => void | Promise<void>;
     disabled?: boolean;
     className?: string;
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function Button({
                                    children,
@@ -38,6 +38,7 @@ export default function Button({
                                    disabled,
                                    onClick,
                                    className,
+                                   ...props
                                }: ButtonProps) {
     const [internalLoading, setInternalLoading] = useState(false)
     const loading = externalLoading ?? internalLoading
@@ -73,6 +74,7 @@ export default function Button({
 
     return (
         <button
+            {...props}
             onClick={handleClick}
             disabled={disabled || loading}
             className={cn(

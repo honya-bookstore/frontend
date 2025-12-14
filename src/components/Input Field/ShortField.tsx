@@ -32,6 +32,7 @@ export default function ShortField({
                 </label>
             )}
             <input
+                value={props.value}
                 maxLength={charLimit}
                 onChange={onValueChange}
                 placeholder={props.placeholder}
