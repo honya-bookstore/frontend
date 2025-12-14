@@ -16,7 +16,7 @@ export default auth((req) => {
   }
 
   if (pathname.startsWith("/admin")) {
-    if (req.auth?.role !== UserRole.ADMIN && req.auth?.role !== UserRole.STAFF) {
+    if (req.auth.role !== UserRole.ADMIN && req.auth.role !== UserRole.STAFF) {
       return NextResponse.redirect(new URL("/", req.url));
     }
   }
@@ -33,6 +33,3 @@ export const config = {
     "/((?!api|_next/static|_next/image|assets|favicon.svg|sitemap.xml|robots.txt).*)",
   ],
 };
-
-// provide path for server components
-// https://www.propelauth.com/post/getting-url-in-next-server-components
