@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getBookCover(media: BookMedia[]) {
     const cover = media.find((med) => med.isCover);
-    return cover ? cover.url : "images/fallbackBookImage.png"
+    return cover ? cover.url : "/images/fallbackBookImage.png"
 }
 
 export const fetcher = (
