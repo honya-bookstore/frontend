@@ -37,7 +37,12 @@ export default function CartPage() {
                     <div className={'flex flex-col font-plus-jakarta-sans text-[20px] min-w-[300px] px-[10px] gap-3'}>
                         <div className={'flex justify-between'}>
                             <span>Subtotal</span>
-                            <span>{subtotal.toFixed(2)}$</span>
+                            <span>
+                                {subtotal.toLocaleString("vi-VN", {
+                                    style: "currency",
+                                    currency: "VND",
+                                })}
+                            </span>
                         </div>
                         <div className={'flex justify-between'}>
                             <span>Shipping</span>
@@ -45,12 +50,20 @@ export default function CartPage() {
                         </div>
                         <div className={'flex justify-between'}>
                             <span>Tax</span>
-                            <span>{(subtotal * 0.1).toFixed(1)}$</span>
+                            <span>{(subtotal * 0.1).toLocaleString("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                            })}
+                            </span>
                         </div>
                         <div className={'border-1 border-line-color w-full'}/>
                         <div className={'flex justify-between font-prata text-[22px] tracking-wide'}>
                             <span>Total</span>
-                            <span>{(subtotal * 1.1).toFixed(2)}$</span>
+                            <span>{(subtotal * 1.1).toLocaleString("vi-VN", {
+                                style: "currency",
+                                currency: "VND",
+                            }
+                            )}</span>
                         </div>
                     </div>
                     <div className={'flex-col flex gap-4 w-full'}>
