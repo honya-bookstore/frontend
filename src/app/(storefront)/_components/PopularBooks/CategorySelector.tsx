@@ -23,7 +23,7 @@ export default function CategorySelector({ categories, books }: CategorySelector
     filteredBooks = filteredBooks.sort((a, b) => b.purchaseCount - a.purchaseCount).slice(0, 8);
 
     return (
-        <div className="flex flex-col items-center w-full gap-8">
+        <div className="flex flex-col items-center w-full gap-8 max-w-7xl">
             <div className="flex flex-wrap justify-center gap-3">
                 {categories.map((cat) => (
                     <button
