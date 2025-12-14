@@ -1,5 +1,5 @@
+'use client'
 import FileUploadZone from "@/app/(cms)/admin/media/upload/_components/FileUploadZone";
-import SelectMediaDialog from "@/app/(cms)/admin/media/upload/_components/SelectMediaDialog";
 
 export default function MediaUploadPage() {
     return (
