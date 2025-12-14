@@ -3,10 +3,19 @@ import {getBookCover} from "@/lib/utils";
 import {BookResponse} from "@/types/types";
 import BookHeaderOptions from "@/app/(cms)/admin/books/_components/BookHeaderOptions";
 import BookTableActions from "@/app/(cms)/admin/books/_components/BookTableActions";
+import {Metadata} from "next";
+import {CustomPagination} from "@/components/Pagination/CustomPagination";
 
-async function getBooks(search: string) {
+export const metadata: Metadata = {
+    title: 'Book List',
+    description: 'Manage the list of books in the bookstore',
+}
+
+async function getBooks(search: string, page: number): Promise<BookResponse> {
     const params = new URLSearchParams();
     if (search) params.set('search', search);
+    params.set('page', page.toString());
+    params.set('limit', '10');
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books?${params.toString()}`, {
         method: 'GET',
@@ -17,19 +26,26 @@ async function getBooks(search: string) {
     });
 
     if (!res.ok) {
-        throw new Error('Failed to fetch books');
+        const errorData = await res.json();
+        console.error('Failed to fetch books:', errorData.message || 'Unknown error');
+        return {
+            data: [],
+            meta: { totalItems: 0, pageItems: 0, itemsPerPage: 10, totalPages: 0, currentPage: 1 }
+        };
     }
 
     return res.json();
 }
 
-export default async function BookListPage({searchParams}: { searchParams: { search?: string } }) {
-    const search = searchParams?.search || '';
-    const booksData: BookResponse = await getBooks(search);
+export default async function BookListPage({searchParams}: { searchParams: { search?: string, page?: number } }) {
+    const params = await searchParams;
+    const search = params?.search || '';
+    const page = params?.page || 1;
+    const booksData: BookResponse = await getBooks(search, page);
     const books = booksData.data;
 
     return (
-        <main className={'flex flex-col h-full gap-6'}>
+        <main className={'flex flex-col gap-6'}>
             <div className={'flex justify-between items-center'}>
                 <h1 className={'font-prata text-3xl'}>Book List</h1>
                 <BookHeaderOptions/>
@@ -71,11 +87,14 @@ export default async function BookListPage({searchParams}: { searchParams: { sea
                         <td className="px-4 py-3 border-gray-100">{book.publisher}</td>
                         <td className="px-4 py-3 border-gray-100 text-center">{book.stockQuantity}</td>
                         <td className="px-4 py-3 border-gray-100 text-center">{book.purchaseCount}</td>
-                        <BookTableActions/>
+                        <BookTableActions book={book}/>
                     </tr>
                 ))}
                 </tbody>
             </table>
+            <div className={'self-end'}>
+                <CustomPagination totalPages={booksData.meta.totalPages}/>
+            </div>
         </main>
     )
 }
