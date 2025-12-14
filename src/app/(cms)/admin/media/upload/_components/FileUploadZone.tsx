@@ -1,11 +1,15 @@
 'use client';
 import {useDropzone} from "react-dropzone";
 import {useState, useCallback} from "react";
-import Form from "next/form";
 import Icon from "@/components/Icon";
+import {uploadImage} from "@/lib/services/upload-image";
+import {useSession} from "next-auth/react";
+import {toast} from "sonner";
 
 export default function FileUploadZone() {
     const [loading, setLoading] = useState(false);
+    const session = useSession();
+    const token = session.data?.accessToken;
 
     const onDrop = useCallback((acceptedFiles: File[]) => {
         if (acceptedFiles.length === 0 || loading) return;
@@ -15,14 +19,18 @@ export default function FileUploadZone() {
             formData.append('files', file);
         });
         try {
-            // Simulate upload
-            setTimeout(() => {
-                console.log('Files uploaded:', acceptedFiles)
-                setLoading(false)
-            }, 2000)
+            const uploadPromises = acceptedFiles.map(async (file) => {
+                if (!token) throw new Error('No access token');
+                return await uploadImage(file, token);
+            });
+            Promise.all(uploadPromises)
+                .then((results) => {
+                    toast.success(`Upload ${results.length} file(s) successfully`);
+                })
         } catch {
-            // TODO: show error toast
-            setLoading(false)
+            toast.error('Failed to upload files');
+        } finally {
+            setLoading(false);
         }
     }, [loading])
 
