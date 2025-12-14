@@ -26,7 +26,7 @@ export default function BookCard({book, discount = 0, showCartButton = false}: B
             <div className={'book-cover flex p-8 bg-[#efeee8] rounded-lg relative transition-all duration-200'}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}>
-                <Image src={getBookCover(book.media)} alt={"cover"} width={250} height={390} className={'overflow-hidden h-[250px] w-auto shadow-xl object-contain'} />
+                <Image src={getBookCover(book.media)} alt={"cover"} width={156} height={250} className={'overflow-hidden h-[250px] w-[156px] shadow-xl object-cover'} />
                 {showCartButton && isHovered && (
                     <>
                         <motion.div className={'absolute w-full h-full left-0 bottom-0 bg-white opacity-10'}
