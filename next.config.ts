@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
             },
             {
                 protocol: "https",
-                hostname: 'minio-api-electricilies.kevinnitro.id.vn',
+                hostname: 'minio-api-honyabookstore.kevinnitro.id.vn',
             }
         ]
     }
