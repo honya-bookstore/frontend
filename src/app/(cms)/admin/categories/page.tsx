@@ -1,96 +1,91 @@
-'use client'
-import {useState, useEffect} from "react";
-import ShortField from "@/components/Input Field/ShortField";
-import LongField from "@/components/Input Field/LongField";
-import Button from "@/components/Button";
-import category from "@/mocks/data/category.json"
-import Image from "next/image";
-import Icon from "@/components/Icon";
+import { auth } from "@/auth"; // Server-side auth
+import { CategoryResponse } from "@/types/types";
+import CategoryForm from "@/app/(cms)/admin/categories/_components/CategoryForm";
+import CategoryTableOptions from "@/app/(cms)/admin/categories/_components/CategoryTableOptions";
+import {CustomPagination} from "@/components/Pagination/CustomPagination";
+import {Metadata} from "next";
 
-// TODO: add pagination
-export default function CategoryList() {
-    const [categoryName, setCategoryName] = useState("");
-    const [categorySlug, setCategorySlug] = useState("");
-    const [categoryDescription, setCategoryDescription] = useState("");
-    const [hasError, setHasError] = useState(false);
-    const categories = category;
+export const metadata: Metadata = {
+    title: 'Category List',
+    description: 'Manage the list of categories in the bookstore',
+}
 
-    useEffect(() => {
-        const isNameValid = categoryName.trim().length > 0;
-        const isSlugValid = categorySlug.trim().length > 0;
+export async function getCategories(page: number = 1, limit?: number) {
+    const session = await auth();
+    const params = new URLSearchParams();
+    params.set('page', page.toString());
+    if (limit) params.set('limit', limit.toString());
 
-        setHasError(
-            !isNameValid ||
-            !isSlugValid
-        );
-    }, [categoryName, categorySlug]);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories?${params.toString()}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${session?.accessToken}`,
+        },
+        cache: 'no-store'
+    });
+
+    if (!res.ok) {
+        const errorData = await res.json();
+        console.error('Failed to fetch categories:', errorData.message || 'Unknown error');
+        return {
+            data: [] ,
+            meta: { totalItems: 0, pageItems: 0, itemsPerPage: limit, totalPages: 0, currentPage: page }
+        };
+    }
+
+    return res.json();
+}
+
+export default async function CategoryListPage({searchParams}: { searchParams: { page?: string } }) {
+    const params = await searchParams;
+    const page = Number(params?.page) || 1;
+    const categoriesData: CategoryResponse = await getCategories(page, 8);
+    const categories = categoriesData.data || [];
 
     return (
-        <main className={'flex flex-col h-full gap-6'}>
+        <main className={'flex flex-col gap-6'}>
             <h1 className={'font-prata text-3xl'}>Category List</h1>
-            <section className={'flex items-center justify-between gap-12 h-full'}>
-                <div
-                    className={'flex flex-col justify-between w-2/5 h-full border-1 border-line-color rounded-[15px] px-[25px] py-[15px] '}>
-                    <ShortField label={'Category Name'}
-                                className={'w-full p-3'}
-                                placeholder={'Enter category name'}
-                                value={categoryName}
-                                required={true}
-                                onValueChange={(e) => setCategoryName(e.target.value)}/>
-                    <ShortField label={'Category Slug'}
-                                className={'w-full p-3'}
-                                placeholder={'Enter category slug'}
-                                value={categorySlug}
-                                required={true}
-                                onValueChange={(e) => setCategorySlug(e.target.value)}/>
-                    <LongField label={'Description'}
-                               className={'w-full p-3 h-64'}
-                               charLimit={300}
-                               value={categoryDescription}
-                               placeholder={'Enter description'}
-                               onValueChange={(e) => setCategoryDescription(e.target.value)}/>
-                    <Button shape={'rect'}
-                            variant={'solid'}
-                            icon={'add'}
-                            iconSize={25}
-                            disabled={hasError}
-                            className={'text-white bg-button-blue hover:bg-sky-600 w-fit h-[50px] font-plus-jakarta-sans rounded-[15px]'}>
-                        Add Category
-                    </Button>
-                </div>
-                <table className="w-full border-collapse rounded-lg overflow-hidden shadow-sm h-full">
-                    <thead>
-                    <tr className="bg-gray-100 text-left text-[16px] font-bold text-gray-700">
-                        <th className="px-4 py-3 border-r border-gray-200 text-center">ID</th>
-                        <th className="px-4 py-3 border-r border-gray-200">Name</th>
-                        <th className="px-4 py-3 border-r border-gray-200">Slug</th>
-                        <th className="px-4 py-3 border-r border-gray-200 text-center line-clamp-3">Description</th>
-                        <th className="px-4 py-3 text-center">Actions</th>
-                    </tr>
-                    </thead>
-
-                    <tbody className="divide-y divide-gray-100 text-sm text-gray-700">
-                    {categories.map((category, index) => (
-                        <tr
-                            key={index}
-                            className="hover:bg-gray-50 transition-colors duration-200"
-                        >
-                            <td className="px-4 py-3 border-gray-100 font-medium">{category.id}</td>
-                            <td className="px-4 py-3 border-gray-100">{category.name}</td>
-                            <td className="px-4 py-3 border-gray-100">{category.slug}</td>
-                            <td className="px-4 py-3 border-gray-100">{category.description}</td>
-                            <td className="px-4 py-3 text-center gap-3">
-                                <button className="text-gray-600 hover:text-blue-400 ml-3">
-                                    <Icon name={'edit'} size={25}/>
-                                </button>
-                                <button className="text-red-500 hover:text-red-700 ml-3">
-                                    <Icon name={'trash'} size={25}/>
-                                </button>
-                            </td>
+            <section className={'flex items-start justify-between gap-12 h-full'}>
+                <CategoryForm mode="add" />
+                <div className={'flex-col flex gap-4 h-full'}>
+                    <table className="w-full border-collapse rounded-lg overflow-hidden shadow-sm h-fit">
+                        <thead>
+                        <tr className="bg-gray-100 text-left text-[16px] font-bold text-gray-700">
+                            <th className="px-4 py-3 border-r border-gray-200 text-center">ID</th>
+                            <th className="px-4 py-3 border-r border-gray-200">Name</th>
+                            <th className="px-4 py-3 border-r border-gray-200">Slug</th>
+                            <th className="px-4 py-3 border-r border-gray-200 text-center line-clamp-3">Description</th>
+                            <th className="px-4 py-3 text-center">Actions</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100 text-sm text-gray-700">
+                        {categories.length === 0 ? (
+                            <tr>
+                                <td colSpan={5} className="text-center py-4">No categories found</td>
+                            </tr>
+                        ) : (
+                            categories.map((category, index) => (
+                                <tr
+                                    key={category.id || index}
+                                    className="hover:bg-gray-50 transition-colors duration-200"
+                                >
+                                    <td className="px-4 py-3 border-gray-100 font-medium text-center">{category.id}</td>
+                                    <td className="px-4 py-3 border-gray-100">{category.name}</td>
+                                    <td className="px-4 py-3 border-gray-100">{category.slug}</td>
+                                    <td className="px-4 py-3 border-gray-100 max-w-[400px]">{category.description}</td>
+                                    <td className="px-4 py-3 text-center">
+                                        <CategoryTableOptions category={category}/>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
+                        </tbody>
+                    </table>
+                    <div className={'self-end'}>
+                        <CustomPagination totalPages={categoriesData.meta.totalPages}/>
+                    </div>
+                </div>
             </section>
         </main>
     )
