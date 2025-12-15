@@ -70,6 +70,7 @@ export interface Order {
     items: OrderItem[],
     lastName: string,
     paymentUrl: string,
+    phone: string
     provider: 'COD' | 'VNPAY' | 'MOMO',
     status: 'Pending' | 'Processing' | 'Shipping' | 'Delivered' | 'Cancelled',
     totalAmount: number,
@@ -182,5 +183,10 @@ export interface CategoryResponse {
 
 export interface MediaResponse {
     data: Media[];
+    meta: ResponseMetadata;
+}
+
+export interface OrderResponse {
+    data: Order[];
     meta: ResponseMetadata;
 }
