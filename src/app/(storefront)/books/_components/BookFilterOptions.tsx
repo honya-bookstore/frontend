@@ -187,13 +187,23 @@ export default function BookFilterOptions({ categories }: BookFilterOptionsProps
                 </div>
                 <BookPageOptions />
             </div>
-            <div className="mt-4">
+            <div className="mt-4 flex gap-4">
                 <Button
                     type="submit"
                     variant="solid"
                     className="w-[200px] h-[45px] bg-button-blue hover:bg-sky-600 text-white font-plus-jakarta-sans rounded-[5px]"
                 >
                     Apply Filter
+                </Button>
+                <Button
+                    type='reset'
+                    variant="outline"
+                    onClick={() => {
+                        reset();
+                        router.replace(pathname, { scroll: false });
+                    }}
+                    className="ml-4 w-[200px] h-[45px] border border-gray-400 text-black font-plus-jakarta-sans rounded-[5px]">
+                    Clear Filter
                 </Button>
             </div>
         </form>

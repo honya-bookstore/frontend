@@ -26,6 +26,7 @@ export default async function BooksPage({ searchParams }: BookPageProps) {
     const {
         page = "1",
         limit = "20",
+        category_ids,
         sort_price,
         sort_recent,
         max_price,
@@ -40,6 +41,7 @@ export default async function BooksPage({ searchParams }: BookPageProps) {
         limit: limit.toString(),
     });
 
+    if (category_ids) bookQueryParams.append("category_ids", category_ids.toString());
     if (sort_price) bookQueryParams.append("sort_price", sort_price.toString());
     if (sort_recent) bookQueryParams.append("sort_recent", sort_recent.toString());
     if (max_price) bookQueryParams.append("max_price", max_price.toString());
@@ -50,6 +52,11 @@ export default async function BooksPage({ searchParams }: BookPageProps) {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books?${bookQueryParams.toString()}`, {cache: "no-store"});
     if (!res.ok) {
+        return (
+            <main className={'flex flex-col items-center justify-center h-full py-20'}>
+                <h1 className={'font-prata text-3xl'}>Failed to load books.</h1>
+            </main>
+        )
         throw new Error("Failed to fetch books");
     }
     const data: BookResponse = await res.json();
@@ -63,7 +70,7 @@ export default async function BooksPage({ searchParams }: BookPageProps) {
         ]
 
     return (
-        <main className={'flex flex-col items-start justify-start gap-8 pt-10 pb-20 max-w-7xl'}>
+        <main className={'flex flex-col items-start justify-start gap-8 pt-10 pb-20 max-w-7xl mx-auto'}>
             <div className={'w-full'}>
                 <Breadcrumb items={breadcrumbItems}/>
             </div>
