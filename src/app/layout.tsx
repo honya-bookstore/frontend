@@ -30,6 +30,22 @@ const cormorantUnicaseFont = Cormorant_Unicase({
 export const metadata: Metadata = {
     icons: {
         icon: "/favicon.png",
+    },
+    openGraph: {
+        title: 'Honya Bookstore',
+        description: 'Your favorite online bookstore',
+        url: 'https://honya-bookstore.vercel.app/',
+        siteName: 'Honya Bookstore',
+        images: [
+            {
+                url: '/og-image.png',
+                width: 800,
+                height: 600,
+                alt: 'Honya Bookstore',
+            }
+        ],
+        locale: 'en_US',
+        type: 'website',
     }
 };
 
