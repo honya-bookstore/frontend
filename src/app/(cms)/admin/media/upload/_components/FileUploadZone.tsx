@@ -32,7 +32,7 @@ export default function FileUploadZone() {
         } finally {
             setLoading(false);
         }
-    }, [loading])
+    }, [loading, token])
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
@@ -41,6 +41,7 @@ export default function FileUploadZone() {
             'image/jpeg' : ['.jpeg', '.jpg'],
             'image/gif' : ['.gif'],
         },
+        disabled: loading || !token,
         noClick: loading,
         noDrag: loading,
     })
