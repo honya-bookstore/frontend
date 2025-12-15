@@ -1,5 +1,10 @@
-'use client'
 import FileUploadZone from "@/app/(cms)/admin/media/upload/_components/FileUploadZone";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'Upload Media',
+    description: 'Upload new media files to the CMS.',
+}
 
 export default function MediaUploadPage() {
     return (

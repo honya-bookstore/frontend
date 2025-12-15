@@ -2,6 +2,12 @@ import BookForm from "@/app/(cms)/admin/books/_components/BookForm";
 import {auth} from "@/auth";
 import {getCategories} from "@/app/(cms)/admin/categories/page";
 import {CategoryResponse} from "@/types/types";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: 'Edit Book',
+    description: 'Edit the details of an existing book in the bookstore',
+}
 
 export default async function BookEditPage({ searchParams } : { searchParams: Promise<{ id: string }> }) {
     const session = await auth();
