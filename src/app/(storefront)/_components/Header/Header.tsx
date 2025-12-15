@@ -29,7 +29,7 @@ export default function Header() {
             </div>
             <div className={'w-full border-b border-[#e0e0e0]'}/>
             <div className={'w-full flex justify-between px-60'}>
-                <Image src={'/Logo.svg'} alt={'Logo'} width={160} height={40} className={'py-4'}/>
+                <Image src={'/logo.svg'} alt={'Logo'} width={160} height={40} className={'py-4'}/>
                 <nav className={'flex gap-0 items-center'}>
                     {Object.entries(navigationItems).map(([name, path]) => (
                         <Link
