@@ -17,7 +17,7 @@ interface PaymentSuccessPageProps {
 export default async function PaymentSuccessPage(
     { searchParams }: PaymentSuccessPageProps
 ) {
-    const session = auth();
+    const session = await auth();
     const params = await searchParams;
     const { vnp_TxnRef, orderId } = params;
 

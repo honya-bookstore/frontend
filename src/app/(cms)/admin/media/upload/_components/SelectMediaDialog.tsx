@@ -8,7 +8,7 @@ import {Media, MediaResponse} from "@/types/types";
 import Icon from "@/components/Icon";
 import Image from "next/image";
 import {Check} from "lucide-react";
-import {BookImageValues} from "@/app/(cms)/admin/books/add/_components/NewBookForm";
+import {BookImageValues} from "@/app/(cms)/admin/books/_components/BookForm";
 import FileUploadZone from "@/app/(cms)/admin/media/upload/_components/FileUploadZone";
 import {CustomPagination} from "@/components/Pagination/CustomPagination";
 import {useSearchParams} from "next/navigation";
