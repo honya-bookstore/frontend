@@ -12,8 +12,6 @@ export default function PaymentInformation() {
     const session = useSession();
 
     const [paymentMethod, setPaymentMethod] = useState<string>('credit-card');
-    const [isProcessing, setIsProcessing] = useState<boolean>(false);
-    const [isDone, setIsDone] = useState<boolean>(false);
 
     const handleProceed = async () => {
         orderContext.setOrderInformation({
@@ -35,16 +33,15 @@ export default function PaymentInformation() {
 
         if (!res.ok) {
             const errorData = await res.json();
+            toast.error(errorData.message || 'Failed to create order');
             throw new Error(errorData.message || 'Failed to create order');
         }
 
         const data = await res.json();
         if (paymentMethod === 'credit-card') {
             window.location.href = `https://sandbox.vnpayment.vn/paymentv2/vpcpay.html/${data.paymentUrl}`;
-            setIsProcessing(true);
         } else {
             toast.success('Order placed successfully.');
-            setIsDone(true);
             window.location.href = '/checkout/payment/success?orderId=' + data.id;
         }
     }

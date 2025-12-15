@@ -7,6 +7,8 @@ import {sliderVariants} from "@/motion/variants";
 import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 import {useCart} from "@/app/(storefront)/_context/CartContext";
+import {getBookCover} from "@/lib/utils";
+import Image from "next/image";
 
 
 interface BookDetailSectionProps {
@@ -27,13 +29,19 @@ export default function BookDetailSection({ book }: BookDetailSectionProps) {
 
     const prev = () =>
     {
-        setCurrent((c) => (c - 1 + imageUrls.length) % imageUrls.length);
-        console.log(imageUrls);
+        const newIndex = (current - 1 + imageUrls.length) % imageUrls.length;
+        setCurrent(newIndex);
+        if (newIndex < thumbPage * visibleThumbs || newIndex >= (thumbPage + 1) * visibleThumbs) {
+            setThumbPage(Math.floor(newIndex / visibleThumbs));
+        }
         setDirection(-1);
     }
     const next = () => {
-        setCurrent((c) => (c + 1) % imageUrls.length);
-        console.log(imageUrls);
+        const newIndex = (current + 1) % imageUrls.length;
+        setCurrent(newIndex);
+        if (newIndex < thumbPage * visibleThumbs || newIndex >= (thumbPage + 1) * visibleThumbs) {
+            setThumbPage(Math.floor(newIndex / visibleThumbs));
+        }
         setDirection(1);
     }
     const changeThumbPage = (dir: number) => {
@@ -55,12 +63,12 @@ export default function BookDetailSection({ book }: BookDetailSectionProps) {
                             <motion.img
                                 layout={"preserve-aspect"}
                                 key={current}
-                                src={`/${imageUrls[current]}`}
+                                src={imageUrls[current]}
                                 alt={book.title}
                                 width={400}
                                 height={400}
                                 loading={"eager"}
-                                className={'shadow-xl h-[400px] w-full aspect-auto rounded-md'}
+                                className={'shadow-xl h-[400px] w-[250px] object-contain aspect-auto rounded-md'}
                                 custom={direction}
                                 variants={sliderVariants}
                                 initial="enter"
@@ -79,17 +87,19 @@ export default function BookDetailSection({ book }: BookDetailSectionProps) {
                             ←
                         </button>
 
-                        <div className="flex gap-[calc(100%/10)] justify-center">
+                        <div className="flex gap-5 justify-center">
                             {thumbsToShow.map((url, index) => {
                                 const actualIndex = thumbPage * visibleThumbs + index
                                 const isActive = actualIndex === current
                                 return (
-                                    <img
+                                    <Image
                                         key={actualIndex}
-                                        src={`/${url}`}
+                                        src={url}
                                         alt=""
+                                        height={80}
+                                        width={50}
                                         onClick={() => setCurrent(actualIndex)}
-                                        className={`w-16 h-24 rounded-md cursor-pointer object-contain shadow-sm transition-all ${
+                                        className={`h-[80px] w-[50px] rounded-md cursor-pointer object-contain shadow-sm transition-all ${
                                             isActive
                                                 ? "ring-2 ring-blue-500 scale-105"
                                                 : "hover:scale-105 opacity-80"

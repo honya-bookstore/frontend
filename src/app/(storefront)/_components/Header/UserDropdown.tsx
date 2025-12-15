@@ -6,7 +6,6 @@ import {signOut, useSession} from "next-auth/react";
 
 export default function UserDropdown() {
     const session = useSession();
-    console.log(session.data?.role);
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className={'relative'}>

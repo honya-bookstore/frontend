@@ -137,23 +137,6 @@ export default function BookForm({ categories, mode, initialData }: AddBookFormP
     }, [mode, initialData, reset]);
 
     const onSubmit = async (data: BookFormValues) => {
-        console.log('Submitting data:',{
-            author: data.author,
-            categoryIds: data.categories.map(cat => cat.categoryId),
-            description: data.description,
-            pagesCount: data.pageCount,
-            price: data.price,
-            yearPublished: data.publishedYear,
-            publisher: data.publisher,
-            title: data.title,
-            weight: data.weight,
-            stockQuantity: 1,
-            media: data.images.map(img => {
-                return {
-                    mediaId: img.mediaId,
-                    isCover: img.isCover,
-                }
-            })});
         const method = mode === 'add' ? 'POST' : 'PATCH';
         const url = mode === 'add'
             ? `${process.env.NEXT_PUBLIC_API_URL}/books`

@@ -10,7 +10,6 @@ import { useForm, Controller} from "react-hook-form";
 import {useOrder} from "@/app/(storefront)/_context/OrderContext";
 import {useSession} from "next-auth/react";
 
-// TODO: Remember to add charLimit to and validation for all fields
 const shippingInfoSchema = z.object({
     email: z.string().email("Invalid email address"),
     firstName: z.string().min(1, "Required field"),
@@ -33,7 +32,7 @@ export default function ShippingInformation() {
             firstName: orderContext.orderInformation?.firstName || '',
             lastName: orderContext.orderInformation?.lastName || '',
             address: orderContext.orderInformation?.address || '',
-            phone: orderContext.orderInformation?.phone || '',
+            phone: orderContext.orderInformation?.phone ? orderContext.orderInformation.phone.replace('+84', '0') : '',
             city: orderContext.orderInformation?.city || '',
         },
         reValidateMode: "onChange",
@@ -48,7 +47,7 @@ export default function ShippingInformation() {
             phone: data.phone.replace('0', '+84'),
             city: data.city,
             userId: session.data?.user?.id || '',
-            returnUrl: window.location.origin,
+            returnUrl: `${window.location.origin}/checkout/payment/success`,
             provider: "COD",
         });
         window.location.href = '/checkout/payment';
