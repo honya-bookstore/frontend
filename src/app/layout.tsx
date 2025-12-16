@@ -28,6 +28,7 @@ const cormorantUnicaseFont = Cormorant_Unicase({
 })
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://honya-bookstore.vercel.app/'),
     icons: {
         icon: "/favicon.png",
     },
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
         siteName: 'Honya Bookstore',
         images: [
             {
-                url: '/og-image.png',
+                url: '/og-image.jpg',
                 width: 800,
                 height: 600,
                 alt: 'Honya Bookstore',
