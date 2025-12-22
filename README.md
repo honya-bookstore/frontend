@@ -46,7 +46,6 @@ Browse an extensive catalog of the most recent and popular book titles.
 ![Book Catalog](https://i.ibb.co/WW5tb1sK/Screenshot-2025-12-22-141541.png)
 
 ### **Advanced Search & Filtering**
-<hr/>
 Find exactly what you are looking for.
 
 - **Filter** by Genre, Author, Price Range, or Publication Date.
@@ -55,19 +54,16 @@ Find exactly what you are looking for.
 ![Search and Filter](https://i.ibb.co/hJNrwdQG/Screenshot-2025-12-22-140829.png)
 
 ### **Frequest Promotions**
-<hr/>
 Keep users engaged with special discounts and offers, you don't want to miss out on these deals!
 
 ![Promotions](https://i.ibb.co/BVYCtDcr/Screenshot-2025-12-22-140950.png)
 
 ### **Reliable Customer Service**
-<hr/>
 Integrate support features to assist users with issues or inquiries, keeping customer satisfaction is our job.
 
 ![Customer Service](https://i.ibb.co/N6p2DQ5S/Screenshot-2025-12-22-141122.png)
 
 ### **Keep Up With Latest Releases**
-<hr/>
 Stay updated with the newest book releases and upcoming titles in our blog page and articles. Perhaps you will find one or two that satisfy your reading taste?
 
 ![Blog Page](https://i.ibb.co/rKKdQYGn/Screenshot-2025-12-22-141322.png)
