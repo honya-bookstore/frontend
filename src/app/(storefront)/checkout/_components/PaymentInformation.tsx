@@ -39,7 +39,7 @@ export default function PaymentInformation() {
 
         const data = await res.json();
         if (paymentMethod === 'credit-card') {
-            window.location.href = `https://sandbox.vnpayment.vn/paymentv2/vpcpay.html/${data.paymentUrl}`;
+            window.location.href = `${data.paymentUrl}`;
         } else {
             toast.success('Order placed successfully.');
             window.location.href = '/checkout/payment/success?orderId=' + data.id;
