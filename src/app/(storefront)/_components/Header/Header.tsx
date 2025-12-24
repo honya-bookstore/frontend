@@ -2,6 +2,7 @@ import Icon from '@/components/Icon';
 import Link from "next/link";
 import Image from "next/image";
 import UserDropdown from "@/app/(storefront)/_components/Header/UserDropdown";
+import {auth} from "@/auth";
 
 const navigationItems : Record<string, string> = {
     HOME: '/',
@@ -11,12 +12,23 @@ const navigationItems : Record<string, string> = {
     CONTACT: '/contact',
 };
 
-export default function Header() {
+export default async function Header() {
+    const session = await auth();
     return (
         <header className={'min-w-full w-full flex flex-col'}>
             <div className={'flex w-full px-60 justify-end py-2'}>
                 <div className={'flex gap-10 items-center font-inter text-[12px]'}>
-                    <UserDropdown/>
+                    {session?.user ? (
+                        <UserDropdown/>
+                    ) : (
+                        <Link href={'/api/auth/signin'}>
+                            <div
+                                className={'flex w-full gap-1 items-center hover:text-gray-500 transition-colors duration-300 cursor-pointer'}>
+                                <Icon name={"person"} size={16}/>
+                                <span className={''}>Sign In</span>
+                            </div>
+                        </Link>
+                    )}
                     <div className={'border-l h-4 border-[#e0e0e0]'}/>
                     <Link href={'/cart'}>
                         <div
